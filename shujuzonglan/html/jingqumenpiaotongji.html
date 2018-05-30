@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name=renderer content=webkit>
+		<title>景区门票统计</title>
+		<script src="../js/echarts.js"></script>
+		<script src="../js/jquery.min.js"></script>
+
+		<style>
+			#body1 {
+				margin-top: -1px;
+			}
+			
+			#main {
+				width: 100%;
+				height: 360px;
+			}
+			
+			#main1 {
+				float: left;
+				width: 40%;
+				height: 350px;
+				
+			}
+			
+			#main2 {
+				float: left;
+				width: 58%;
+				height: 350px;
+				
+			}
+			/*.btn-group{
+				width: 1100px;height: 21px;background-color: white;
+			}*/
+			
+			#foot {
+				width: 100%;
+				height: 400px;
+			}
+			
+			#foot1 {
+				width: 40%;
+				height: 370px;
+				position: relative;
+				left: 5px;
+				top: 5px;
+				/*z-index: -1;*/
+			}
+			
+			#foot2 {
+				width: 57.1%;
+				height: 370px;
+				position: absolute;
+				left: 41.45%;
+				top: 364px;
+				;
+				/*z-index: -1;*/
+			}
+			
+			#btn1 {
+				/*z-index: -2;*/
+				width: 440px;
+				height: 10px;
+				background-color: white;
+			}
+			
+			#btn2 {
+				z-index: -2;
+				width: 640px;
+				height: 10px;
+				background-color: white;
+			}
+			
+			#foot21 {
+				float: left;
+				width: 440px;
+				height: 390px;
+				border: 5px solid #eff1ff;
+			}
+			
+			#foot22 {
+				float: left;
+				width: 640px;
+				height: 390px;
+				border: 5px solid #eff1ff;
+			}
+			
+			#btn11 {
+				
+				position: relative;
+				left: 20%;
+				
+				bottom: 356px;
+				width: 62px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: white;
+				background-color: #027AE0;
+				border: 1px solid #027AE0;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+			
+			#btn12 {
+				
+				position: relative;
+				left: 19.4546%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+			
+			#btn13 {
+				
+				position: relative;
+				left: 19%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			
+			#btn21 {
+				position: relative;
+				left: 60%;
+				;
+				bottom: 356px;
+				width: 62px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: white;
+				background-color: #027AE0;
+				border: 1px solid #027AE0;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+			
+			#btn22 {
+				position: relative;
+				left: 59.3637%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px;
+				/*border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;*/
+			}
+			
+			#btn23 {
+				position: relative;
+				left: 58.8182%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+
+				var echarts_main = echarts.init(document.getElementById("main1"));
+				var option = {
+					backgroundColor: 'white',
+					title: {
+						top: '3%',
+						left: '1%',
+						text: '▌锡盟每日门票数',
+						textStyle: {
+							color: '#EEB300',
+							fontSize: 15
+						},
+					},
+					color: ['#3398DB'],
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '1.6%',
+						right: '4%',
+						bottom: '7%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						axisLabel: {
+							interval: 0,
+							rotate: 25,
+							margin: 5,
+
+						},
+						data: ['6月12号', '6月13号', '6月14号', '6月15号', '6月16号', '6月17号', '6月18号'],
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value',
+						name: '数量（张）',
+						axisLabel: {
+							textStyle: {
+								color: "#646464"
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: ['#d9d9d9'],
+								type: 'dashed',
+							}
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999999'
+							}
+						}
+
+					}],
+					series: [{
+						name: '门票总数',
+						type: 'bar',
+						barWidth: '60%',
+						data: [118001, 108450, 94200, 96334, 85390, 108330, 90220]
+					}]
+				};
+				echarts_main.setOption(option);
+			})
+		</script>
+		<script>
+			$(document).ready(function() {
+				var echarts_main = echarts.init(document.getElementById("main2"));
+				var option = {
+					backgroundColor: 'white',
+					title: {
+						top: '3%',
+						left: '4%',
+						text: '▌景区每日门票数',
+						textStyle: {
+							color: '#EEB300',
+							fontSize: 15
+						},
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						orient: 'horizontal',
+						//						top: 'bottom',
+						bottom: '3%',
+						data: ['', '', ' ', '元上都遗址', '多伦湖', '蒙古汗城', '贝子庙', '灰腾草原']
+					},
+					grid: {
+						left: '5%',
+						right: '4%',
+						bottom: '13%',
+						containLabel: true
+					},
+
+					xAxis: {
+						type: 'category',
+
+						boundaryGap: false,
+						data: ['6月12号', '6月13号', '6月14号', '6月15号', '6月16号', '6月17号', '6月18号']
+					},
+					yAxis: {
+						type: 'value',
+						name: '数量（张）',
+						axisLabel: {
+							textStyle: {
+								color: "#646464"
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: ['#d9d9d9'],
+								type: 'dashed',
+							}
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999999'
+							}
+						}
+					},
+					series: [{
+						name: '元上都遗址',
+						type: 'line',
+
+						data: [11120, 9132, 10101, 9634, 10090, 11230, 9210]
+					}, {
+						name: '多伦湖',
+						type: 'line',
+
+						data: [11220, 10182, 9191, 10234, 8990, 9330, 10310]
+					}, {
+						name: '蒙古汗城',
+						type: 'line',
+
+						data: [10150, 9232, 8901, 10154, 11190, 9330, 9410]
+					}, {
+						name: '贝子庙',
+						type: 'line',
+
+						data: [10320, 8332, 12301, 9334, 7390, 10330, 9320]
+					}, {
+						name: '灰腾草原',
+						type: 'line',
+
+						data: [13820, 9932, 10901, 8934, 11290, 10330, 9320]
+					}]
+				};
+
+				echarts_main.setOption(option);
+
+			})
+		</script>
+		<script>
+			var foot1_char;
+			$(document).ready(function() {
+				foot1_char = echarts.init(document.getElementById("foot1"));
+				var option = {
+					backgroundColor: 'white',
+					title: {
+						top: '3%',
+						left: '2%',
+						text: '▌锡盟景区门票历史数据',
+						textStyle: {
+							color: '#EEB300',
+							fontSize: 15
+						},
+					},
+					color: ['#3398DB'],
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['2017.7', '2017.6', '2017.5'],
+						axisLabel: {
+							interval: 0,
+							rotate: 27,
+						},
+
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value',
+						name: '数量（张）',
+						axisLabel: {
+							textStyle: {
+								color: "#646464"
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: ['#d9d9d9'],
+								type: 'dashed',
+							}
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999999'
+							}
+						}
+					}],
+					series: [{
+						name: '锡盟门票总量',
+						type: 'bar',
+						barWidth: '40%',
+						data: [1910334, 1602390, 1230330, ]
+					}]
+				};
+				foot1_char.setOption(option);
+			})
+
+			function three() {
+				$("#btn11").css("background-color", "#027AE0");
+				$("#btn11").css("color", "white");
+				$("#btn12").css("background-color", "white");
+				$("#btn12").css("color", "#027AE0");
+				$("#btn13").css("background-color", "white");
+				$("#btn13").css("color", "#027AE0");
+
+				var option = {
+					color: ['#3398DB'],
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['2017.7', '2017.6', '2017.5'],
+						axisLabel: {
+							interval: 0,
+							rotate: 27,
+						},
+
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+						name: '锡盟门票总量',
+						type: 'bar',
+						barWidth: '40%',
+						data: [1910334, 1602390, 1230330, ]
+					}]
+				};
+				foot1_char.setOption(option);
+			}
+
+			function year() {
+				$("#btn13").css("background-color", "#027AE0");
+				$("#btn13").css("color", "white");
+				$("#btn11").css("background-color", "white");
+				$("#btn11").css("color", "#027AE0");
+				$("#btn12").css("background-color", "white");
+				$("#btn12").css("color", "#027AE0");
+
+				var option = {
+					color: ['#3398DB'],
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['2017.7', '2017.6', '2017.5', '2017.4', '2017.3', '2017.2', '2017.1', '2016.12', '2016.11', '2016.10', '2016.9', '2016.8'],
+						axisLabel: {
+							interval: 0,
+							rotate: 27,
+						},
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+						name: '锡盟门票总量',
+						type: 'bar',
+						barWidth: '60%',
+						data: [1910334, 1602390, 1230330, 1090658, 980023, 765942, 548923, 459023, 533875, 782342, 896902, 1502342]
+					}]
+				};
+
+				foot1_char.setOption(option);
+			}
+
+			function halfyear() {
+				$("#btn12").css("background-color", "#027AE0");
+				$("#btn12").css("color", "white");
+				$("#btn11").css("background-color", "white");
+				$("#btn11").css("color", "#027AE0");
+				$("#btn13").css("background-color", "white");
+				$("#btn13").css("color", "#027AE0");
+
+				var option = {
+					color: ['#3398DB'],
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['2017.7', '2017.6', '2017.5', '2017.4', '2017.3', '2017.2'],
+						axisLabel: {
+							interval: 0,
+							rotate: 27,
+						},
+
+						axisTick: {
+							alignWithLabel: true
+						}
+					}],
+					yAxis: [{
+						type: 'value'
+					}],
+					series: [{
+						name: '锡盟门票总量',
+						type: 'bar',
+						barWidth: '60%',
+						data: [1910334, 1602390, 1230330, 1090658, 980023, 765942]
+					}]
+				};
+				foot1_char.setOption(option);
+			}
+		</script>
+		<script>
+			var foot2_char
+			$(document).ready(function() {
+
+				foot2_char = echarts.init(document.getElementById("foot2"));
+				var option = {
+					backgroundColor: 'white',
+					title: {
+						top: '3%',
+						left: '2%',
+						text: '▌景区门票历史数据',
+						textStyle: {
+							color: '#EEB300',
+							fontSize: 15
+						},
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						orient: 'horizontal',
+						//						top: 'bottom',
+						bottom: '3%',
+						data: ['', '', '', '元上都遗址', '多伦湖', '蒙古汗城', '贝子庙', '灰腾草原']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '10%',
+						containLabel: true
+					},
+
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['2017.7', '2017.6', '2017.5']
+					},
+					yAxis: {
+						type: 'value',
+						name: '数量（张）',
+						axisLabel: {
+							textStyle: {
+								color: "#646464"
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: ['#d9d9d9'],
+								type: 'dashed',
+							}
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999999'
+							}
+						}
+					},
+					series: [{
+						name: '元上都遗址',
+						type: 'line',
+
+						data: [273420, 226832, 199071]
+					}, {
+						name: '多伦湖',
+						type: 'line',
+
+						data: [368220, 305182, 271191]
+					}, {
+						name: '蒙古汗城',
+						type: 'line',
+
+						data: [232150, 215232, 278201]
+					}, {
+						name: '贝子庙',
+						type: 'line',
+
+						data: [272320, 224332, 212301]
+					}, {
+						name: '灰腾草原',
+						type: 'line',
+
+						data: [405820, 272932, 205901]
+					}]
+				};
+
+				foot2_char.setOption(option);
+
+			})
+
+			function year1() {
+				$("#btn23").css("background-color", "#027AE0");
+				$("#btn23").css("color", "white");
+				$("#btn21").css("background-color", "white");
+				$("#btn21").css("color", "#027AE0");
+				$("#btn22").css("background-color", "white");
+				$("#btn22").css("color", "#027AE0");
+				var option = {
+					title: {
+						top: '3%',
+						left: '2%',
+						text: '▌景区门票历史数据'
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						orient: 'horizontal',
+						//						top: 'bottom',
+						bottom: '3%',
+						data: ['', '', '', '元上都遗址', '多伦湖', '蒙古汗城', '贝子庙', '灰腾草原']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '10%',
+						containLabel: true
+					},
+
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['2017.7', '2017.6', '2017.5', '2017.4', '2017.3', '2017.2', '2017.1', '2016.12', '2016.11', '2016.10', '2016.9', '2016.8']
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+						name: '元上都遗址',
+						type: 'line',
+
+						data: [353420, 326832, 299071, 276623, 250984, 268475, 190234, 209752, 240395, 290953, 320945, 379046]
+					}, {
+						name: '多伦湖',
+						type: 'line',
+
+						data: [368220, 345182, 311191, 298042, 262750, 240871, 220945, 190234, 209423, 240864, 270984, 333048]
+					}, {
+						name: '蒙古汗城',
+						type: 'line',
+
+						data: [312150, 335232, 298201, 267485, 284500, 230242, 210984, 210347, 230947, 280846, 308623, 378749]
+					}, {
+						name: '贝子庙',
+						type: 'line',
+
+						data: [372320, 354332, 342301, 290424, 289405, 310285, 298304, 240857, 249039, 310983, 359304, 367847]
+					}, {
+						name: '灰腾草原',
+						type: 'line',
+
+						data: [405820, 372932, 305901, 267485, 208475, 110847, 90432, 80976, 110923, 209384, 289405, 389485]
+					}]
+				};
+				foot2_char.setOption(option);
+			}
+
+			function halfyear1() {
+				$("#btn22").css("background-color", "#027AE0");
+				$("#btn22").css("color", "white");
+				$("#btn21").css("background-color", "white");
+				$("#btn21").css("color", "#027AE0");
+
+				$("#btn23").css("background-color", "white");
+				$("#btn23").css("color", "#027AE0");
+				var option = {
+					title: {
+						top: '3%',
+						left: '2%',
+						text: '▌景区门票历史数据'
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						orient: 'horizontal',
+						//						top: 'bottom',
+						bottom: '3%',
+						data: ['', '', '', '元上都遗址', '多伦湖', '蒙古汗城', '贝子庙', '灰腾草原']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '10%',
+						containLabel: true
+					},
+
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['2017.7', '2017.6', '2017.5', '2017.4', '2017.3', '2017.2']
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+						name: '元上都遗址',
+						type: 'line',
+
+						data: [353420, 326832, 299071, 276623, 250984, 268475]
+					}, {
+						name: '多伦湖',
+						type: 'line',
+
+						data: [368220, 345182, 311191, 298042, 262750, 240871]
+					}, {
+						name: '蒙古汗城',
+						type: 'line',
+
+						data: [312150, 335232, 298201, 267485, 284500, 230242]
+					}, {
+						name: '贝子庙',
+						type: 'line',
+
+						data: [372320, 354332, 342301, 290424, 289405, 310285]
+					}, {
+						name: '灰腾草原',
+						type: 'line',
+
+						data: [405820, 372932, 305901, 267485, 208475, 110847]
+					}]
+				};
+				foot2_char.setOption(option);
+			}
+
+			function three1() {
+				$("#btn21").css("background-color", "#027AE0");
+				$("#btn21").css("color", "white");
+				$("#btn22").css("background-color", "white");
+				$("#btn22").css("color", "#027AE0");
+				$("#btn23").css("background-color", "white");
+				$("#btn23").css("color", "#027AE0");
+				var option = {
+					title: {
+						top: '3%',
+						left: '2%',
+						text: '▌景区门票历史数据'
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					legend: {
+						orient: 'horizontal',
+						//						top: 'bottom',
+						bottom: '3%',
+						data: ['', '', '', '元上都遗址', '多伦湖', '蒙古汗城', '贝子庙', '灰腾草原']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '10%',
+						containLabel: true
+					},
+					toolbox: {
+						feature: {
+							saveAsImage: {}
+						}
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						data: ['2017.7', '2017.6', '2017.5']
+					},
+					yAxis: {
+						type: 'value'
+					},
+					series: [{
+						name: '元上都遗址',
+						type: 'line',
+
+						data: [273420, 226832, 199071]
+					}, {
+						name: '多伦湖',
+						type: 'line',
+
+						data: [368220, 305182, 271191]
+					}, {
+						name: '蒙古汗城',
+						type: 'line',
+
+						data: [232150, 215232, 278201]
+					}, {
+						name: '贝子庙',
+						type: 'line',
+
+						data: [272320, 224332, 212301]
+					}, {
+						name: '灰腾草原',
+						type: 'line',
+
+						data: [405820, 272932, 205901]
+					}]
+				};
+				foot2_char.setOption(option);
+			}
+		</script>
+	</head>
+
+	<body id="body1">
+		<div id="main">
+			<div id="main1"></div>
+			<div id="main2"></div>
+		</div>
+
+		<!--<div id="foot">
+			<div id="foot21">
+				<div class="btn-group1" id="btn1" role="group" aria-label="...">-->
+		<div id="foot1"></div>
+		<button type="button" id="btn11" onclick="three()" class="btn btn-info three">近三个月</button>
+		<button type="button" id="btn12" onclick="halfyear()" class="btn btn-info halfyear">&nbsp;&nbsp;近半年&nbsp;&nbsp;</button>
+		<button type="button" id="btn13" onclick="year()" class="btn btn-info  active year">&nbsp;&nbsp;近一年&nbsp;&nbsp;</button>
+		<!--</div>
+				
+			</div>-->
+		<!--<div id="foot22">
+				<div class="btn-group2" id="btn2" role="group" aria-label="...">-->
+		<div id="foot2"></div>
+		<button type="button" id="btn21" onclick="three1()" class="btn btn-info three">近三个月</button>
+		<button type="button" id="btn22" onclick="halfyear1()" class="btn btn-info halfyear">&nbsp;&nbsp;近半年&nbsp;&nbsp;</button>
+		<button type="button" id="btn23" onclick="year1()" class="btn btn-info  active year">&nbsp;&nbsp;近一年&nbsp;&nbsp;</button>
+		<!--</div>
+				
+			</div>-->
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分销商管理-等级管理</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/tuigaishenqing.css" rel="stylesheet ">
+		<!--<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/2.2.2/css/bootstrap.min.css">-->
+		<!--<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">-->
+	</head>
+
+	<body>
+		<table class="table_width">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					<span class="times">申请日期：
+						
+					</span>
+				</td>
+				<td class="tr_2">
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+					<span class="times">&nbsp;&nbsp;&nbsp;至：</span>
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+				</td>
+				<td class="tr_1">
+					处理状态：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="tr_1">
+					关键字：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="分销商名、订单号等">
+				</td>
+				<td class="tr_1">
+					快速选择：
+				</td>
+				<td class="tr_2" colspan="3">
+					<input class="btn btn-xs" type="button" value="今天">
+					<input class="btn btn-xs" type="button" value="昨天">
+					<input class="btn btn-xs" type="button" value="近一周">
+					<input class="btn btn-xs" type="button" value="近一月">
+					<input class="btn btn-xs" type="button" value="本周">
+					<input class="btn btn-xs" type="button" value="本月">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn11">查询</button></td>
+				<td colspan="2"><button class="btn21">重置</button></td>
+			</tr>
+		</table>
+		<br />
+		<table id="tab_manager" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+			<thead>
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th>编号</th>
+					<th>分销商名称</th>
+					<th>销量</th>
+					<th>信誉</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>148062</td>
+					<td>	XXXXXX公司</td>
+					<td>100万</td>
+					<td>4.6分
+						<!--<span class="glyphicon glyphicon-star " style="color:#EB9316; " aria-hidden="true "></span>
+						<span class="glyphicon glyphicon-star " style="color:#EB9316; " aria-hidden="true "></span>
+						<span class="glyphicon glyphicon-star " style="color:#EB9316; " aria-hidden="true "></span>
+						<span class="glyphicon glyphicon-star " style="color:#EB9316; " aria-hidden="true "></span>-->
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">管理</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>247062</td>
+					<td>	XXXXXX公司</td>
+					<td>100万</td>
+					<td>4.0分</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">管理</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>348062</td>
+					<td>	XXXXXX公司</td>
+					<td>100万</td>
+					<td>4.8分</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">管理</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>549062</td>
+					<td>	XXXXXX公司</td>
+					<td>200万</td>
+					<td>4.9分</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">管理</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>649062</td>
+					<td>	XXXXXX公司</td>
+					<td>100万</td>
+					<td>4.1分</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">管理</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>750062</td>
+					<td>	XXXXXX公司</td>
+					<td>150万</td>
+					<td>4.2分</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">管理</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<br/>
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+		<script src="My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+				format: 'yyyy-MM-dd',
+				language: 'zh-CN',
+				pickTime: false
+			}).on('changeDate', function() {
+				$(this).datetimepicker('hide');
+			});
+		</script>
+	</body>
+
+</html>

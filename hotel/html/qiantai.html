@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>景区签约管理</title>
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="../css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="../js/bootstrap-table.min.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="../css/passengerflow.css">
+		<link href="../css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+		 
+<script src="../My97DatePicker/WdatePicker.js"></script>  
+ <script type="text/javascript">  
+      $('#datetimepicker').datetimepicker({  
+        format: 'yyyy-MM-dd',  
+        language: 'zh-CN',  
+                   pickTime: false  
+      }).on('changeDate',function(){  
+                   $(this).datetimepicker('hide');  
+           });  
+    </script>  
+		  <style>
+  		.tb_th{
+  		background-color: #67ace0;
+  		width: 25%;
+  		text-align: left;
+  	}
+  	.tr_1{
+  		background-color: #deedf9;
+    width: 25%;
+    text-align: right;
+    padding-right: 10px;
+    border: 1px solid #dce3e8;
+  	}
+  	.tr_2{
+  		width: 25%;
+  		background-color: #F7FAFD;
+  		 padding-left: 10px;
+  		 border: 1px solid #dce3e8;
+  	}
+  	.table_{
+  		    width: 100%;
+    border: 1px solid #deedf9;
+    /* position: relative; */
+    /* left: 0%; */
+    /*position: absolute;*/
+    left: 0%;
+        margin-bottom: 2%;
+  	}
+  	.btn1{
+  		    width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color:#3475A9;
+    margin-left: 80%;
+    color: white;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  	}
+  	.btn2{
+  		 width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color: #3475A9;
+    margin-left: 0px;
+     color: white;
+  	}
+  		.dytop_table_td1{
+  		text-align: center;
+  	}
+   #travel_table > thead > tr > th
+  	{
+  		text-align: center;
+  	}
+  </style>
+
+	</head>
+	<body>
+		<table class="table_">
+  		<tr>
+  			<th colspan="4" class="tb_th">查询条件 </th>
+  		</tr>
+  		<tr>
+  			<td class="tr_1">
+  				酒店名称
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  			<td class="tr_1">
+  				特惠类型
+  			</td>
+  			<td class="tr_2">
+				<select style="width: 50%;">
+				  <option value="volvo">[全部]</option>
+				  <option value="saab">品牌酒店</option>
+				  <option value="opel">热门酒店</option>
+			      <option value="opel">特价酒店</option>
+				</select>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td class="tr_1">
+  				区域商圈
+  			</td>
+  			<td class="tr_2">
+  				<select style="width: 30%;">
+				  <option value="volvo">全部</option>
+				  <option value="saab">Saab</option>
+				  <option value="opel">Opel</option>
+				  <option value="audi">Audi</option>
+				</select>-<select style="width: 30%;">
+				  <option value="volvo">全部</option>
+				  <option value="saab">Saab</option>
+				  <option value="opel">Opel</option>
+				  <option value="audi">Audi</option>
+				  <option value="opel">Opel</option>
+				  <option value="audi">Audi</option>
+				</select>
+  			</td>
+  			<td class="tr_1">
+  				酒店星级
+  			</td>
+  			<td class="tr_2">
+				<select style="width: 50%;">
+				  <option value="volvo">全部</option>
+				  <option value="saab">一星级</option>
+				  <option value="opel">二星级</option>
+				  <option value="audi">三星级</option>
+				  <option value="opel">四星级</option>
+				  <option value="audi">五星级</option>
+				</select>
+  			</td>
+  		</tr>
+
+  		<tr>
+  			
+  			<td class="tr_1">
+  				状态
+  			</td>
+  			<td class="tr_2">
+				<select style="width: 50%;">
+				  <option value="volvo">全部</option>
+				  <option value="saab">有效</option>
+				  <option value="opel">无效</option>
+		
+				</select>
+  			</td>
+  			<td class="tr_1">
+  				
+  			</td>
+  			<td class="tr_2">
+  				
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2"><button class="btn1">查询</button></td>
+  			<td colspan="2"><button class="btn2">重置</button></td>
+  		</tr>
+  	</table>
+  	
+<table id="travel_table" class="table table-hover" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+					<thead>
+						<tr class="dytop_table_th">
+							<th>酒店编号</th>
+							<th>酒店名称</th>
+							<th>特惠类型</th>
+							<th>区域商圈</th>
+							<th>酒店星级</th>
+							<th>推荐指数</th>
+							<th>状态</th>
+							<th style="width: 50px;;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312</td>
+							<td>锡林郭勒元和建国饭店</td>
+							<td>品牌酒店</td>
+							<td>振兴街道-南京路商圈</td>
+							<td>五星级</td>
+							<td>99</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102341</td>
+							<td>锡林浩特滨河酒店</td>
+							<td>特价酒店</td>
+							<td>察哈尔大姐-察哈尔商圈</td>
+							<td>三星级</td>
+							<td>90</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>104412</td>
+							<td>锡林浩特时泰国际大酒店</td>
+							<td>热门酒店</td>
+							<td>重庆路-重庆路商圈</td>
+							<td>四星级</td>
+							<td>96</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>112212</td>
+							<td>锡林浩特盛家商务酒店</td>
+							<td>特价酒店</td>
+							<td>振兴街道-南京路商圈</td>
+							<td>三星级</td>
+							<td>88</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>152312</td>
+							<td>锡林浩特大酒店</td>
+							<td>品牌酒店</td>
+							<td>河西开发区-开发区商圈</td>
+							<td>四星级</td>
+							<td>95</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312</td>
+							<td>锡林郭勒元和建国饭店</td>
+							<td>品牌酒店</td>
+							<td>振兴街道-南京路商圈</td>
+							<td>五星级</td>
+							<td>99</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312</td>
+							<td>锡林郭勒元和建国饭店</td>
+							<td>品牌酒店</td>
+							<td>振兴街道-南京路商圈</td>
+							<td>五星级</td>
+							<td>99</td>
+							<td>有效</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+	</body>
+</html>

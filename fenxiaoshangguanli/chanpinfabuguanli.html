@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>产品发布管理</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/chanpinfabuguanli.css" rel="stylesheet ">
+	</head>
+
+	<body>
+		<div class="margin_top10">
+			<table id="table_issue" class="table table-hover" data-toggle="table">
+				<tbody>
+					<tr>
+						<td>零售价销售限制：</td>
+						<td>
+							<input type="radio"  name="optionsRadios" id="optionsRadios1" value="option1"> 允许分销商修改零售价
+							<input type="radio"  name="optionsRadios" id="optionsRadios2" value="option2"> 不允许分销商修改零售价
+						</td>
+					</tr>
+					<tr>
+						<td>销售范围：</td>
+						<td>
+							<select class="form-control sale_width" >
+								<option>只对授权团队的商户销售（需要导游）</option>
+								<option>只对授权团队的商户销售（不需要导游）</option>
+								<option>只对非授权团队的商户销售（需要导游）</option>
+								<option>只对非授权团队的商户销售（不需要导游）</option>
+								<option>其他</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>支付方式：</td>
+						<td>
+							<input type="radio"  name="optionsRadios" id="optionsRadios3" value="option3"/> 在线支付
+							<input type="radio"  name="optionsRadios" id="optionsRadios4" value="option4"/> 景点现付
+							<div>
+								<table class="inner_table">
+									<tr class="padding15">
+										<td class="textalign_right padding15">预订时付款：</td>
+										<td  class="padding15">
+											<select class="form-control pay_width">
+												<option>在线按产品总价的百分比支付</option>
+												<option>其他</option>
+											</select>
+										</td>
+										<td class="textalign_right padding15">数值：</td>
+										<td  class="padding15">
+											<select class="form-control pay_width">
+												<option>100%</option>
+												<option>80%</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3" class="textalign_right text_greycolor">通过设置可以支持定金和分阶段付款等模式。如果一次收全款的请不要做修改。</td>
+									</tr>
+									<tr>
+										<td class="textalign_right padding15">游玩时付款：</td>
+										<td colspan="3" class="text_color padding15">游玩时在景点支付剩余票款</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>产品总数量：</td>
+						<td>
+							<input type="text" class="form-control buy_width" value="50">
+							<span class="text_greycolor">"0"表示不限量，销售完毕（在价格规定定义的时间范围内）西东会自动将产品下架。</span>
+						</td>
+					</tr>
+					<tr>
+						<td>淘宝码商支持：</td>
+						<td>
+							<input type="radio"  name="optionsRadios" id="optionsRadios5" value="option5"/> 支持淘宝码商对接<span class="text_greycolor">（建议能实现自动核销的产品选择此项）</span>
+							<input type="radio"  name="optionsRadios" id="optionsRadios6" value="option6"/> 支持淘宝码商对接
+
+						</td>
+					</tr>
+					<tr>
+						<td>每单最多购买：</td>
+						<td>
+							<input type="text" class="form-control buy_width" value="2">
+							<span class="text_greycolor">"0"表示不限量</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+		<!--<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>-->
+
+		<!--<script type="text/javascript">
+			$(document).ready(function() {
+				$('.dropdown-toggle').dropdown();
+			});
+		</script>-->
+	</body>
+
+</html>

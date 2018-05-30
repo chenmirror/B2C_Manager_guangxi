@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>产品管理</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/chanpinguanli.css" rel="stylesheet ">
+		<!--<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/2.2.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">-->
+	</head>
+
+	<body>
+		<table class="table_width">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+			<tr>
+				<!--<td class="tr_1">
+					<span class="times">选择日期：
+						
+					</span>
+				</td>
+				<td class="tr_2">
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+					<span class="times">&nbsp;&nbsp;&nbsp;至：</span>
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+				</td>-->
+				<td class="tr_1">
+					编号：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+				<td class="tr_1">
+					状态：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="tr_1">
+					产品名称：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+				<td class="tr_1">
+					快速选择：
+				</td>
+				<td class="tr_2" colspan="3">
+					<input class="btn btn-xs" type="button" value="今天">
+					<input class="btn btn-xs" type="button" value="昨天">
+					<input class="btn btn-xs" type="button" value="近一周">
+					<input class="btn btn-xs" type="button" value="近一月">
+					<input class="btn btn-xs" type="button" value="本周">
+					<input class="btn btn-xs" type="button" value="本月">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn11">查询</button></td>
+				<td colspan="2"><button class="btn21">重置</button></td>
+			</tr>
+		</table>
+		<!--<div class="div_height">-->
+		<!--<div id="toolbar" class="btn-group">
+				<button id="btn_add" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+            </button>
+				<button id="btn_edit" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+            </button>
+				<button id="btn_delete" type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+            </button>
+			</div>-->
+		<table id="tb_manager" class="div_height">
+
+		</table>
+
+		<!--</div>-->
+
+		<!--<table class="table_">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					酒店名称
+				</td>
+				<td class="tr_2">
+					<input type="text" />
+				</td>
+				<td class="tr_1">
+					是否签约
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;">
+						<option value="volvo">[请选择]</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					区域商圈
+				</td>
+				<td class="tr_2">
+					<select style="width: 25%;">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>-
+					<select style="width: 25%;">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+				<td class="tr_1">
+					酒店星级
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					签约截止日期
+				</td>
+				<td class="tr_2">
+					<span class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+							<input size="16" type="text" value="2017-07-15" readonly>
+							<span class="add-on add-on-remove"><i class="icon-remove"></i></span>
+					<span class="add-on"><i class="icon-calendar"></i></span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn" style="float: right;">查询</button></td>
+				<td colspan="2"><button class="btn" style="float: left;">重置</button></td>
+			</tr>
+		</table>-->
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+		<!--<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>-->
+		<script src="My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				//1.初始化Table
+				var oTable = new TableInit();
+				oTable.Init();
+				//2.初始化Button的点击事件
+				var oButtonInit = new ButtonInit();
+				oButtonInit.Init();
+			});
+			var TableInit = function() {
+				var oTableInit = new Object();
+				//初始化Table
+				oTableInit.Init = function() {
+					$('#tb_manager').bootstrapTable({
+						url: 'data1.json', //请求后台的URL（*）
+						method: 'get', //请求方式（*）
+						toolbar: '#toolbar', //工具按钮用哪个容器
+						striped: true, //是否显示行间隔色
+						cache: false, //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+						pagination: true, //是否显示分页（*）
+						sortable: false, //是否启用排序
+						//						sortOrder: "asc", //排序方式
+						queryParams: oTableInit.queryParams, //传递参数（*）
+						//                      queryParams:nil,
+						sidePagination: "client", //分页方式：client客户端分页，server服务端分页（*）
+						pageNumber: 1, //初始化加载第一页，默认第一页
+						pageSize: 5, //每页的记录行数（*）
+						pageList: [5, 10, 25, 50, 100, 'ALL'], //可供选择的每页的行数（*）
+						search: true, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+						strictSearch: true, //设置为 true启用 全匹配搜索，否则为模糊搜索
+						showColumns: true, //是否显示所有的列
+						showRefresh: true, //是否显示刷新按钮
+						minimumCountColumns: 2, //最少允许的列数
+						clickToSelect: true, //是否启用点击选中行
+						//						height: 300, //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+						uniqueId: "ID", //每一行的唯一标识，一般为主键列
+						//						showToggle: true, //是否显示详细视图和列表视图的切换按钮
+						cardView: false, //设置为 true将显示card视图，适用于移动设备。否则为table试图，适用于pc
+						//						detailView: false, //是否显示详细页面模式。
+						checkboxHeader: true, //设置false 将在列头隐藏check-all checkbox
+						showExport: true,
+						exportDataType: 'basic',
+						//						exportTypes: ['excel'], //导出文件类型  
+						columns: [{
+								checkbox: true
+							}, {
+								field: 'id',
+								title: '编号',
+							},
+							{
+								field: 'name',
+								title: '产品名称',
+							},
+							{
+								field: 'category',
+								title: '产品类型'
+							}, {
+								field: 'sale',
+								title: '销售情况'
+							}, {
+								field: 'state',
+								title: '状态'
+							}, {
+								field: 'weight',
+								title: '权重'
+							},
+							{
+								field: "operation",
+								title: '操作',
+								formatter: function(value, row, index) {
+									var e = '<a href="#" mce_href="#" onclick="edit(\'' + row.id + '\')">编辑</a> ';
+									var d = '<a href="#" mce_href="#" onclick="del(\'' + row.id + '\')">删除</a> ';
+									return e + d;
+								}
+							}
+						]
+					});
+				};
+
+				//得到查询的参数
+				oTableInit.queryParams = function(params) {
+					var temp = { //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+						limit: params.limit, //页面大小
+						offset: params.offset, //页码
+					};
+					return temp;
+				};
+				return oTableInit;
+			};
+
+			var ButtonInit = function() {
+				var oInit = new Object();
+				var postdata = {};
+
+				oInit.Init = function() {
+					//初始化页面上面的按钮事件
+				};
+
+				return oInit;
+			};
+
+			$('#datetimepicker').datetimepicker({
+				format: 'yyyy-MM-dd',
+				language: 'zh-CN',
+				pickTime: false
+			}).on('changeDate', function() {
+				$(this).datetimepicker('hide');
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,51 @@
+.tour_table{
+	width: 800px;
+	height: 400px;
+	color: #000000;
+}
+body{
+	background-color: #fff;
+}
+.title{
+	display: inline;
+	color: #759AA0;
+	font-size: 28px;
+	font-weight: 200;
+	margin-left: 20px;
+}
+.logo{
+	width:80px;
+	float: left;
+	margin-left: 10px;
+}
+.title span{
+	margin-top: 29px;
+	float: left;
+	margin-left: 10px;
+}
+.container{
+	padding: 0;
+	width: 100%;
+	margin: 0 auto;
+	
+}
+.row{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+th{
+	color: #759AA0;
+}
+#guidelevelChart{
+	display: inline-block;
+	width: 40%;
+	height: 400px;
+	margin-right: 150px;
+}
+#cycsChart{
+	display: inline-block;
+	width: 40%;
+	height: 400px;
+}

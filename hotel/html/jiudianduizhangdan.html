@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>景区签约管理</title>
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="../css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="../js/bootstrap-table.min.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="../css/passengerflow.css">
+		<link href="../css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+		 
+<script src="../My97DatePicker/WdatePicker.js"></script>  
+ <script type="text/javascript">  
+      $('#datetimepicker').datetimepicker({  
+        format: 'yyyy-MM-dd',  
+        language: 'zh-CN',  
+                   pickTime: false  
+      }).on('changeDate',function(){  
+                   $(this).datetimepicker('hide');  
+           });  
+    </script>  
+		  <style>
+  		.tb_th{
+  		background-color: #67ace0;
+  		width: 25%;
+  		text-align: left;
+  	}
+  	.tr_1{
+  		background-color: #deedf9;
+    width: 25%;
+    text-align: right;
+    padding-right: 10px;
+    border: 1px solid #dce3e8;
+  	}
+  	.tr_2{
+  		width: 25%;
+  		background-color: #F7FAFD;
+  		 padding-left: 10px;
+  		 border: 1px solid #dce3e8;
+  	}
+  	.table_{
+  		    width: 100%;
+    border: 1px solid #deedf9;
+    /* position: relative; */
+    /* left: 0%; */
+    /*position: absolute;*/
+    left: 0%;
+        margin-bottom: 2%;
+  	}
+  	.btn1{
+  		    width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color:#3475A9;
+    margin-left: 80%;
+    color: white;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  	}
+  	.btn2{
+  		 width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color: #3475A9;
+    margin-left: 0px;
+     color: white;
+  	}
+  		.dytop_table_td1{
+  		text-align: center;
+  	}
+   #travel_table > thead > tr > th
+  	{
+  		text-align: center;
+  	}
+  </style>
+
+	</head>
+	<body>
+		<table class="table_">
+  		<tr>
+  			<th colspan="4" class="tb_th">查询条件 </th>
+  		</tr>
+  		<tr>
+  			<td class="tr_1">
+  				订单编号
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  			<td class="tr_1">
+  				消费时间
+  			</td>
+  			<td class="tr_2">
+  				 
+      <input type="text"  class="Wdate" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:false,readOnly:true})"></input>  
+     到<input type="text"  class="Wdate" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:false,readOnly:true})"></input> 
+  			</td>
+  		</tr>
+  		<tr>
+  			<td class="tr_1">
+  				酒店名称
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  			<td class="tr_1">
+  				酒店房型
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2"><button class="btn1">查询</button></td>
+  			<td colspan="2"><button class="btn2">重置</button></td>
+  		</tr>
+  	</table>
+  	<div style="width: 20%;">
+	
+	<span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+	<a href="#" style="margin-left: 0.5%;">Excel导出</a>
+</div>
+<table id="travel_table" class="table table-hover" data-toggle="table" data-url="#" data-page-size="12" data-pagination="true">
+					<thead>
+						<tr class="dytop_table_th">
+							<th>酒店名称</th>
+							<th>酒店房型</th>
+							<th>订单编号</th>
+							<th>消费时间</th>
+							<th>支付方式</th>
+							<th>间夜</th>
+							<th>订单金额</th>
+							<th>商户收款</th>
+							<th>平台效益</th>
+							<th>结算开支</th>
+							
+							<th style="width: 50px;;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特虹皓商务宾馆  </td>
+							<td>三人间</td>
+							<td>2846379874</td>
+							<td>2017.08.02</td>
+							<td>线下支付</td>
+							<td>2</td>
+							<td>380</td>
+							<td>352</td>
+							<td>28</td>
+							<td>14</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特亿嘉名仕假日酒店</td>
+							<td>标准双人间</td>
+							<td>51221412622</td>
+							<td>2017.03.25</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>187</td>
+							<td>166</td>
+							<td>21</td>
+							<td>9</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特盛家商务酒店 </td>
+							<td>舒适大床房</td>
+							<td>2721323412</td>
+							<td>2017.04.11</td>
+							<td>线下支付</td>
+							<td>2</td>
+							<td>356</td>
+							<td>322</td>
+							<td>34</td>
+							<td>15</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>内蒙古玖苑国际饭店</td>
+							<td>商务套房</td>
+							<td>5124121362</td>
+							<td>2017.01.15</td>
+							<td>线下支付</td>
+							<td>2</td>
+							<td>3162</td>
+							<td>2880</td>
+							<td>282</td>
+							<td>200</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>内蒙古玖苑国际饭店</td>
+							<td>豪华套房</td>
+							<td>4125116123</td>
+							<td>2017.02.10</td>
+							<td>在线支付</td>
+							<td>2</td>
+							<td>6000</td>
+							<td>5150</td>
+							<td>850</td>
+							<td>700</td>
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特百花祥禄宾馆 </td>
+							<td>豪华双人房</td>
+							<td>3156177343</td>
+							<td>2017.06.22</td>
+							<td>线下支付</td>
+							<td>3</td>
+							<td>669</td>
+							<td>612</td>
+							<td>57</td>
+							<td>42</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>汉庭酒店（锡林浩特贝子庙大街店）</td>
+							<td>家庭房</td>
+							<td>9822313124</td>
+							<td>2017.07.25</td>
+							<td>线下支付</td>
+							<td>2</td>
+							<td>622</td>
+							<td>575</td>
+							<td>47</td>
+							<td>24</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特蒙兴商务酒店 </td>
+							<td>商务标间</td>
+							<td>3674810651</td>
+							<td>2017.03.03</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>266</td>
+							<td>240</td>
+							<td>26</td>
+							<td>17</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特蒙锡雅饭店 </td>
+							<td>A座普通套房</td>
+							<td>5623186914</td>
+							<td>2017.02.03</td>
+							<td>线下支付</td>
+							<td>2</td>
+							<td>2040</td>
+							<td>1700</td>
+							<td>340</td>
+							<td>220</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特民族宾馆</td>
+							<td>豪华古典标准房</td>
+							<td>3896191244</td>
+							<td>2017.07.13</td>
+							<td>在线支付</td>
+							<td>3</td>
+							<td>1129</td>
+							<td>839</td>
+							<td>290</td>
+							<td>200</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林浩特豪景宾馆 </td>
+							<td>大床房</td>
+							<td>5125686745</td>
+							<td>2017.06.06</td>
+							<td>在线支付</td>
+							<td>2</td>
+							<td>230</td>
+							<td>201</td>
+							<td>29</td>
+							<td>14</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+						<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+						<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr><tr class="dytop_table_td1" id="delete_table">
+							<td>锡林郭勒元和建国饭店</td>
+							<td>普通大床房</td>
+							<td>2313411251</td>
+							<td>2017.05.05</td>
+							<td>在线支付</td>
+							<td>1</td>
+							<td>362</td>
+							<td>340</td>
+							<td>22</td>
+							<td>11</td>
+							
+							<td>
+								<!--<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<!--<button type="button" class="btn btn-primary">-->
+									  <!--查看-->
+									<!--</button>-->
+								<!--</a>--> 
+								<!--<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+	</body>
+</html>

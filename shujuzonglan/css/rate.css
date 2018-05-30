@@ -1,0 +1,108 @@
+body{
+    padding: 0;
+    margin: 0;
+    /*background: #EFF1FF;*/
+}
+.container1{
+    width:95%;
+    background:#fff;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.left{
+    width: 60%;
+    float: left;
+    height: 400px;
+}
+.pie{
+    width: 40%;
+    float: right;
+    height: 400px;
+}
+
+.top{
+    padding-top: 45px;
+    width: 100%;
+    height: 245px;
+    margin: 0 auto;
+}
+.bottom{
+    width: 100%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: -20px;
+}
+.three{
+    width: 95%;
+    margin: 0 auto;
+    height:400px;
+    background: #fff;
+    margin-top: 10px;
+}
+.rate{
+    width:100%;
+    height:400px;
+    float: left;
+}
+.week,.month,.year{
+    width:100%;
+    height:400px;
+    float: left;
+}
+
+.btn_rate{
+    margin-top: 5px;
+    float: right;
+    margin-right: 60px;
+}
+
+ .hotel_one{
+    width:50%;
+    height:400px;
+    float: left;
+}
+
+ .house_one{
+    width:50%;
+    height:400px;
+    float: right;
+}
+ #btn_week{
+ 	 position: relative;
+    left: 400px;
+    bottom: 390px;
+    width: 60px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: white;
+    background-color: #027AE0;
+    border: 1px solid #027AE0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+ }
+ #btn_month{
+ 	position: relative;
+    left: 394px;
+    bottom: 390px;
+    width: 60px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: #027AE0;
+    background-color: white;
+    border: 1px solid #027AE0;
+ }
+#btn_year{
+	position: relative;
+    left: 390px;
+    bottom:390px;
+    width: 60px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: #027AE0;
+    background-color: white;
+    border: 1px solid #027AE0;
+    border-left:none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

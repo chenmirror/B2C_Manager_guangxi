@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name=renderer content=webkit>
+		<title>商家基本信息</title>
+		 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="../css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="../js/bootstrap-table.min.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="../css/passengerflow.css">
+		<link href="../css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+<script src="../My97DatePicker/WdatePicker.js"></script>  
+ 
+		  <style>
+  	.tb_th1{
+  		background-color: #67ace0;
+  		width: 25%;
+  		text-align: left;
+  	}
+  	.tr_11{
+  		background-color: #deedf9;
+    width: 25%;
+    text-align: left;
+    padding-left: 10px;
+    border: 1px solid #dce3e8;
+  	}
+  	.tr_21{
+  		width: 25%;
+  		background-color: #F7FAFD;
+  		 padding-left: 10px;
+  		 border: 1px solid #dce3e8;
+  	}
+  	.table_1{
+  		    width: 100%;
+    border: 1px solid #deedf9;
+    /* position: relative; */
+    /* left: 0%; */
+    /*position: absolute;*/
+    left: 0%;
+        margin-bottom: 2%;
+  	}
+  	.btn11{
+  		    width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color:#3475A9;
+    margin-left: 410px;
+    color: white;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  	}
+  	.btn21{
+  		 width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color: #3475A9;
+    margin-left: -52px;
+     color: white;
+  	}
+  </style>
+
+	</head>
+	<body>
+		<table class="table_1">
+	  		<tr>
+	  			<th colspan="4" class="tb_th1">查看商家基本信息 </th>
+	  		</tr>
+	  		<tr>
+	  			<td class="tr_11">
+	  				酒店编号
+	  			</td>
+	  			<td class="tr_21">
+	  				JD000370
+	  			</td>
+	  			<td class="tr_11">
+	  				酒店中文名称
+	  			</td>
+	  			<td class="tr_21">
+					锡盟国际大酒店
+	  			</td>
+	  		</tr>
+	  		<tr >
+	  			<th colspan="4" style="background-color: #FFFFFF;"><button style="border-radius: 6px;background-color: #67ACE0;">展开</button> </th>
+	  		</tr>
+  		</table>
+
+
+				
+		<table id="travel_table" class="table table-hover" style="text-align: center;" data-toggle="table" data-url="#" data-page-size="6" data-pagination="true">
+			<thead align="center">
+				<tr class="dytop_table_th" style="text-align: center;">
+					<th style="text-align: center;">序号</th>
+					<th>房间名称</th>
+					<th>房型</th>
+					<th>床型/数量</th>
+					<th>早餐</th>
+					<th>宽带</th>
+					<th>房间楼层</th>
+					<th>房间面积</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>1</td>
+					<td>豪华大床房</td>
+					<td>大床房</td>
+					<td>双人床2.2米/2</td>
+					<td>双早</td>
+					<td>免费</td>
+					<td>2、5-7层</td>
+					<td>38</td>
+				</tr>
+				<tr>
+					<td colspan="8" style="text-align: left;">备注：不可加床</td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>2</td>
+					<td>豪华双床房</td>
+					<td>标准间</td>
+					<td>双人床2.2米/2</td>
+					<td>单人床1.2米/2</td>
+					<td>免费</td>
+					<td>3、5-7层</td>
+					<td>38</td>
+				</tr>
+				<tr>
+					<td colspan="8" style="text-align: left;">备注：不可加床</td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>3</td>
+					<td>行政套餐</td>
+					<td>套房</td>
+					<td>双人床2.2米/2</td>
+					<td>双早</td>
+					<td>免费</td>
+					<td>8层</td>
+					<td>80</td>
+				</tr>
+				<tr>
+					<td colspan="8" style="text-align: left;">备注：不可加床</td>
+				</tr>
+				<!--<tr class="dytop_table_td1" id="delete_table">
+					<td>3</td>
+					<td>行政套餐</td>
+					<td>套房</td>
+					<td>双人床2.2米/2</td>
+					<td>双早</td>
+					<td>免费</td>
+					<td>8层</td>
+					<td>80</td>
+				</tr>
+				<tr>
+					<td colspan="8" style="text-align: left;">备注：不可加床</td>
+				</tr>-->
+				
+			</tbody>
+		</table>
+		<div id="" style="margin-top: 30px;margin-bottom: 20px;">
+		<table id="travel_table" class="table table-hover" style="text-align: center;padding-bottom: 30px;" data-toggle="table" data-url="#" data-page-size="7" data-pagination="true">
+			<thead align="center">
+				<tr class="dytop_table_th" style="text-align: center;">
+					<th style="text-align: center;">酒店服务设施</th>
+					<th>酒店服务设施包含内容</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr class="dytop_table_td1" id="delete_table">
+					<td style="width: 40%;">常规服务</td>
+					<td style="text-align: left;">早餐、上网、免费旅游交通图、洗衣服务、自动取款机、鲜花店、专职行李员、滚梯/电梯、免费停车场、叫车服务、残疾人客房、前台贵重物品保险柜、接机服务、叫醒服务、国内长途、国际长途、24小时热水</td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>餐饮服务</td>
+					<td>大堂吧、就把、咖啡厅、西餐厅、中餐厅</td>
+				</tr>
+				
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>休闲娱乐服务</td>
+					<td>足浴、按摩室、夜总会、桑拿浴室、棋牌室、卡拉OK厅</td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>健身服务</td>
+					<td>健身室、篮球、室内游泳池</td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>商务服务</td>
+					<td>高尔夫球场、商务中心、邮政服务、会议室、外币兑换服务、票务服务</td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>特色服务</td>
+					<td></td>
+				</tr>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>接受信用类型</td>
+					<td>境外发行信用卡--JCB、境外发行信用卡--大来（Diners Club）、境外发行信用卡--运通（AMEX）、境外发行信用卡--威士（VISA）、境外发行信用卡--万事达（Master）、国内发行银联卡</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</body>
+</html>

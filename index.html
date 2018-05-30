@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>锡盟综合管理平台</title>
+
+		<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css" />
+		<link rel="stylesheet" type="text/css" href="semantic/docs.css" />
+
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="semantic/semantic.min.js"></script>
+		<script src="js/more.js"></script>
+
+		<!--- Example Javascript -->
+		<script>
+			$(document).ready(function() {
+
+				$('.item').bind('click', function() {
+					$('.item:not(this)').css("background", "#132B57");
+					$(this).css("background", "#425579");
+					//  $(this).next().css("background","#a6a6a6");
+				});
+
+				var speed = -2;
+				var oDiv = document.getElementById("div1");
+				var oUl = document.getElementsByTagName("ul")[0];
+				var aLi = document.getElementsByTagName("li");
+				oUl.innerHTML += oUl.innerHTML;
+				oUl.style.width = aLi[0].offsetWidth * aLi.length + "px";
+
+				function move() {
+					if(oUl.offsetLeft < -oUl.offsetWidth / 2) {
+						oUl.style.left = "0";
+					}
+					if(oUl.offsetLeft > 0) {
+						oUl.style.left = -oUl.offsetWidth / 2 + "px";
+					}
+					oUl.style.left = oUl.offsetLeft + speed + "px";
+				}
+				var timer = setInterval(move, 100);
+				oDiv.onmousemove = function() {
+					clearInterval(timer);
+				};
+				oDiv.onmouseout = function() {
+					timer = setInterval(move, 100);
+				};
+				document.getElementsByTagName("a")[0].onclick = function() {
+					speed = -0.2;
+				};
+				document.getElementsByTagName("a")[1].onclick = function() {
+					speed = +0.2;
+				}
+
+				$('.ui.accordion').accordion();
+
+				$("#example > div.pusher > div > div.toc > div > div > div.item > a").click(function() {
+					var $a_item = $("#example > div.pusher > div > div.toc > div > div > div.item.active");
+					$a_item.removeClass("active");
+				});
+
+				$('a.item').click(function() {
+					var $a_content = $("#example > div.pusher > div > div.toc > div > div > div.item.active > div > a.item.active.transition.visible");
+					var $a_content_menu = $("#example > div.pusher > div > div.toc > div > div > div.item.active > div");
+					var $a_title = $("#example > div.pusher > div > div.toc > div > div > div.item.active > a");
+					var $a_item = $("#example > div.pusher > div > div.toc > div > div > div.item.active");
+					$a_content.removeClass("active");
+					//$a_content_menu.removeClass("active");
+					$a_title.removeClass("active");
+					$a_item.removeClass("active");
+
+					$(this).addClass("active");
+					$(this).parent().addClass("active");
+					$(this).parent().siblings("a").eq(0).addClass("active");
+					$(this).parent().parent().addClass("active");
+					$(".breadcrumb").html('');
+					var className=$(this).attr('class');
+					console.log($(this).parent().parent().parent().parent().text());
+					if(className.indexOf('sanjiTest')!=-1){
+						$("<a class='section'>主页</a><i class='right chevron icon divider'></i><a class='section'>" + $(this).parent().parent().parent().parent().text().substring(0, 40) + "</a><i class='right chevron icon divider'></i><a class='section'>" +  $(this).parent().parent().text().substring(15, 30) + "</a><i class='right chevron icon divider'></i><div class='active section'>" + $(this).text().substring(2, 30) + "</div>").appendTo($(".breadcrumb"));
+
+					}else{
+						$("<a class='section'>主页</a><i class='right chevron icon divider'></i><a class='section'>" + $(this).parent().siblings("a").eq(0).text() + "</a><i class='right chevron icon divider'></i><div class='active section'>" + $(this).text().substring(2, 30) + "</div>").appendTo($(".breadcrumb"));
+
+					}
+					
+					
+
+					
+				});
+
+				setNav();
+
+			});
+
+			function setNav() {
+
+				var $a_content = $("#example > div.pusher > div > div.toc > div > div > div.item.active > div > a.item.active.transition.visible");
+				var $a_title = $("#example > div.pusher > div > div.toc > div > div > div.item.active > a");
+				$(".breadcrumb").html('');
+				$("<a class='section'>主页</a><i class='right chevron icon divider'></i><a class='section'>" + $a_title.text() + "</a><i class='right chevron icon divider'></i><div class='active section'>" + $a_content.text().substring(2, 30) + "</div>").appendTo($(".breadcrumb"));
+
+				console.info
+
+				($("#example > div.pusher > div > div.toc > div > div > div.item.active > div > a.item.transition.visible.active").attr("href"));
+
+				$("#contentFrame").attr("src", $("#example > div.pusher > div > div.toc > div > div > div.item.active > div >  a.item.transition.visible.active").attr("href"));
+
+			}
+
+			function changeFrameHeight() {
+				var ifm = document.getElementById("contentFrame");
+				ifm.height = document.documentElement.clientHeight;
+
+			}
+			window.onresize = function() {
+				changeFrameHeight();
+			}
+
+			$(".item transition visible").hover(
+				function() {
+					$(this).css("color", "white");
+				},
+				function() {
+					$(this).css({
+						"color": "white",
+						"font": "14px 微软雅黑,宋体"
+					});
+				}
+			);
+		</script>
+
+		<style>
+				#example>div.pusher>div>div.toc>div>div>div.item.active {
+				background-color: #2a3d53;
+			}
+			
+			.guide {
+				height: 30px;
+				line-height: 30px;
+				width: 450px;
+				padding-top: 14px;
+				margin-left: 25px;
+				padding-left: 60px;
+			}
+			
+			#div1 {
+				height: 24px;
+				width: 500px;
+				position: relative;
+				overflow: hidden;
+				font-size: 12px;
+				color: rgba(255, 255, 255, .9);
+				margin-top: 20px;
+				margin-left: 200px;
+			}
+			
+			#div1 ul {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			#div1 ul li {
+				float: left;
+				margin-top: -10px;
+				list-style: none;
+				width: 280px;
+				height: 29px;
+			}
+			
+			.section {
+				height: 10px !important;
+				font-size: 12px !important;
+				padding-top: -100px !important;
+			}
+			
+			body {
+				padding: 1em;
+			}
+			
+			.ui.menu {
+				margin: 3em 0em;
+			}
+			
+			.ui.menu:last-child {
+				margin-bottom: 110px;
+			}
+			
+			#example>div.pusher>div>div.toc>div>div>div.item.active {
+				background-color: rgb(66, 85, 121) !important;
+			}
+			
+			#example>div.pusher>div>div.toc>div>div>div.item>div>a.item {
+				background-color: rgb(19, 43, 87);
+			}
+			
+			a.item:hover {
+				color: #fff !important;
+				background: #ed9939 !important;
+				transition: width 2s !important;
+				-moz-transition: width 2s !important;
+				/* Firefox 4 */
+				-webkit-transition: width 2s !important;
+				/* Safari and Chrome */
+				*/
+				/*-o-transition:width 2s  !important; /* Opera */
+			}
+			
+			#example>div.pusher>div>div.toc>div>div>div.item.active>div>a.item.transition.visible.active {
+				color: white;
+			}
+			
+			#example>div.pusher>div>div.toc>div>div>div.item.active>a {
+				color: white;
+				text-align: left;
+				height: 40px;
+				/*margin-left: -15px;*/
+				margin-right: -20px;
+				#example>div.pusher>div>div.toc>div>div>div.item.active>div>a {
+					margin-left: -15px !important;
+					/*
+		width: 80px;*/
+				}
+				#example>div.pusher>div>div.toc>div>div>div.item.active>div>a.item.active {
+					background: rgb(94, 112, 132);
+					text-align: left;
+				}
+				#example>div.pusher>div>div.toc>div>div>div.item>div>a.item {
+					height: 35px;
+					line-height: 25px;
+				}
+				#example>div.pusher>div>div.toc>div>div>div.item>div {
+					padding-left: 5px;
+				}
+				#example>div.pusher>div>div.toc>div>div>div.item {
+					background: #e9ebed;
+				}
+				#a1 {
+					color: #a6a6a6;
+				}
+		</style>
+	</head>
+
+	<body id="example" class="layouts pushable">
+
+		<div class="ui fixed inverted menu" style="background: #132B57;">
+			<div class=" item" style="width: 230px;">
+				<img class="ui small image" src="images/brand.png" style="width: 110px;margin-left: 40px;" />
+			</div>
+			<div class="item" style="margin-top: -20px;width: 500px;">
+				<h2>锡盟旅游产业综合管理平台</h2>
+
+
+			</div>
+			<div style="width: 600px;background: #132B57;">
+				<div class="right menu guide">
+
+					<a class="item">系统切换</a>
+					<a class="item">我的资料</a>
+					<a class="item">密码修改</a>
+					<a class="item">消息</a>
+					<a class="item">退出</a>
+
+				</div>
+
+				<div id="div1">
+					<ul>
+						<li>欢迎登录本系统&nbsp;&nbsp;当前时间:2017-07-31 &nbsp;&nbsp;天气：晴</li>
+						<li>欢迎登录本系统&nbsp;&nbsp;当前时间:2017-07-31 &nbsp;&nbsp;天气：晴</li>
+						<li>欢迎登录本系统&nbsp;&nbsp;当前时间:2017-07-31 &nbsp;&nbsp;天气：晴</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="pusher">
+			<div class="full height">
+
+				<div class="toc" style="width:229px;background-color:#132B57;margin-right: 15px;margin-top: 83px;">
+					<div class="ui sticky transition visible fixed top" style="left: 19px; width: 230px; height: 587px; margin:0px;top: 100px;padding-top: -10px;margin-top: -30px;">
+						<div class="ui secondary vertical following fluid accordion menu" style="margin-left: -20px;padding: 0px;">
+                               
+                               
+                               <div class="item active" style="background-color:#132B57;width: 100%;border: 1px solid #2b4168;margin-top:2px;padding: 0px;margin-bottom: 9px;">
+
+								<img src="img/shuju.png" style="width:30px;margin-left:24px;margin-bottom: -20px;margin-top:-27px;line-height:40px;margin-right: 12px;display: inline-block;" />
+								<a class="title active" style="display:inline-block;height:40px;color: white;margin-bottom: 13px;padding-top: 20px;"> <b style="font-size: 14px;">数据总览</b></a>
+
+								<div class="content menu active" style="margin-left: -10px;margin-top:-10px;">
+									<!--<a class="item transition visible active" href="tour_crowd/total.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;汇总</a>-->
+									
+									<a class="item transition visible active" href="shujuzonglan/html/hotel_order.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店民宿预定统计</a>
+									<a class="item transition visible " href="shujuzonglan/html/rate.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店民宿入住率统计</a>
+									<a class="item transition visible " href="shujuzonglan/html/hotel_satisfaction.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店民宿满意度统计</a>
+									<a class="item transition visible " href="shujuzonglan/html/jingqumenpiaotongji.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;景区门票统计</a>
+									
+									<a class="item transition visible " href="shujuzonglan/html/tourist_server_manyidu_total.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;景区服务满意度统计</a>
+								</div>
+							</div>
+                                
+							<div class="item " style="background-color:#132B57;width: 100%;border: 1px solid #2b4168;margin-top: -10px;padding: 0px;margin-bottom: -1px;">
+
+								<img src="img/jiudian.png" style="width:30px;margin-left:24px;margin-bottom: -20px;margin-top:-24px;line-height:40px;margin-right: 25px;display: inline-block;" />
+								<!--<a class="title active" style="display:inline-block;height:40px;color: white;margin-top:10px;margin-bottom: 10px;padding-top: 14px;margin-left: -13px;"> <b style="font-size: 14px;" href="tour_crowd/source.html" target="contentFrame">旅游人群分析</b></a>-->
+								<a class="title active" id="lvyourenqunfenxi" target="contentFrame" id="youkepianhao_zongti" style="display:inline-block;height:40px;color: white;margin-top:10px;margin-bottom: 10px;padding-top: 7px;margin-left: -13px;"> <b style="font-size: 14px;">酒店管理</b></a>
+
+								<div class="content menu " style="margin-left: -10px; margin-top: -10px;">
+									<!--<a class="item transition visible active" href="tour_crowd/total.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;汇总</a>-->
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title active" style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店订单管理</b></a>
+										<div class="content menu active">
+											<a class="item transition visible active  sanjiTest"   href="hotel/html/zonghedingdan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;综合订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/daifukuan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;待付款订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/jinridaodian.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;今日到店订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/daishenhe.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;退房订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/yixiaofei.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;已消费订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/yiruzhu.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;已入住订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/yiquxiao.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;已取消订单管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/fukuanguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;付款管理</a>
+											<a class="item transition visible sanjiTest" href="hotel/html/tuikuanguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;退款管理</a>
+										</div>
+									</div>
+									<a class="item transition visible" href="hotel/html/jiudainxinxi.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店信息管理</a>
+									<a class="item transition visible " href="hotel/html/qiantai.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店前台管理</a>
+									<a class="item transition visible " href="hotel/html/dianping.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店点评管理</a>
+									<a class="item transition visible " href="hotel/html/baoliufangjiage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;保留房信息管理</a>
+									<a class="item transition visible " href="hotel/html/jiudianduizhangdan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店对账单管理</a>
+								</div>
+							</div>
+							<div class="item " style="background-color:#132B57;width: 100%;border: 1px solid #2b4168;margin-top: -10px;padding: 0px;margin-bottom: -1px;">
+
+								<img src="img/zhihui.png" style="width:30px;margin-left:24px;margin-bottom: -20px;margin-top:-24px;line-height:40px;margin-right: 25px;display: inline-block;" />
+								<!--<a class="title active" style="display:inline-block;height:40px;color: white;margin-top:10px;margin-bottom: 10px;padding-top: 14px;margin-left: -13px;"> <b style="font-size: 14px;" href="tour_crowd/source.html" target="contentFrame">旅游人群分析</b></a>-->
+								<a class="title " id="lvyourenqunfenxi" target="contentFrame" id="youkepianhao_zongti" style="display:inline-block;height:40px;color: white;margin-top:10px;margin-bottom: 10px;padding-top: 7px;margin-left: -13px;"> <b style="font-size: 14px;">智慧牧人之家</b></a>
+
+								<div class="content menu " style="margin-left: -10px; margin-top: -10px;">
+									<a class="item transition visible" href="zhihuimurenzhijia/murenzhijia_xinxichaxun.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;信息查询</a>
+									<a class="item transition visible " href="zhihuimurenzhijia/murenzhijia_ruzhudengji.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;入住登记</a>
+									<a class="item transition visible " href="zhihuimurenzhijia/murenzhijia_tuanduiguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;团队管理</a>
+									<a class="item transition visible " href="zhihuimurenzhijia/murenzhijia_qiantaikezhang.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;前台客账</a>
+									<a class="item transition visible " href="zhihuimurenzhijia/murenzhijia_zhangmucaozuo.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;账目操作</a>
+									<a class="item transition visible " href="zhihuimurenzhijia/murenzhijia_lidianjiezhang.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;离店结账</a>
+									<a class="item transition visible " href="zhihuimurenzhijia/murenzhijia_kezhangchaxun.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;客账查询</a>
+								
+								</div>
+							</div>
+
+							<div class="item" style="background-color:#132B57;width: 100%;border: 1px solid #2b4168;margin-top: -8px;padding: 0px;margin-bottom: -1px;">
+
+								<img src="img/menpiao.png" style="width:30px;margin-left:24px;margin-bottom: -20px;margin-top:-24px;line-height:40px;margin-right: 12px;display: inline-block;" />
+								<a class="title active" style="display:inline-block;height:40px;color: white;margin-bottom: 13px;padding-top: 18px;"> <b style="font-size: 14px;">门票管理</b></a>
+
+								<div class="content menu" style="margin-left: -10px;margin-top:-10px;padding-bottom: 0px;">
+									<!--<a class="item transition visible active" href="tour_crowd/total.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;汇总</a>-->
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;门票订单管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="menpiaoguanli/html/zonghedingdan_manage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;综合订单管理</a>
+											<a class="item transition visible sanjiTest" href="menpiaoguanli/html/daifukuan_order.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;待付款订单管理</a>
+											<a class="item transition visible sanjiTest" href="menpiaoguanli/html/yixiaofei_order.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;已消费订单管理</a>
+											<a class="item transition visible sanjiTest" href="menpiaoguanli/html/yiquxiao_order.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;已取消订单管理</a>
+											<a class="item transition visible sanjiTest" href="menpiaoguanli/html/fukuan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;付款管理</a>
+											<a class="item transition visible sanjiTest" href="menpiaoguanli/html/tuikuan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;退款管理</a>
+										</div>
+									</div>
+									<a class="item transition visible" href="menpiaoguanli/html/tour_qianyue_manager.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;景区签约管理</a>
+									<a class="item transition visible " href="menpiaoguanli/html/menpiaoqiantai_manage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;门票前台管理</a>
+									<a class="item transition visible " href="menpiaoguanli/html/single_menpiao_manage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;单一门票管理</a>
+									<a class="item transition visible " href="menpiaoguanli/html/zuhemenpiao_manage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;组合门票管理</a>
+									<a class="item transition visible " href="menpiaoguanli/html/menpiaodianping_manage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;门票点评管理</a>
+									<a class="item transition visible " href="menpiaoguanli/html/menpiaoduizhangdan_manage.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;门票对账单管理</a>
+								</div>
+							</div>
+
+							<div class="item" style="background-color:#132B57;width: 100%;border: 1px solid #2b4168;padding: 0px;margin-bottom: -1px;">
+
+								<img src="img/fenxiao.png" style="width:30px;margin-left:24px;margin-bottom: -20px;margin-top:-27px;line-height:40px;margin-right: 12px;display: inline-block;" />
+								<a class="title" style="display:inline-block;height:40px;color: white;margin-top:5px;margin-bottom: 10px;padding-top: 15px;"> <b style="font-size: 14px;">分销商管理模块</b></a>
+
+								<div class="content menu" style="margin-left: -10px;margin-top:-10px;padding-bottom: 0px;">
+									<!--<a class="item transition visible active" href="tour_crowd/total.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 50px;">•&nbsp;&nbsp;&nbsp;&nbsp;汇总</a>-->
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;产品管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/chanpinfabuguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;产品发布管理</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/chanpinguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;产品管理</a>
+										</div>
+									</div>
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;销售管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/xiaoshou_dingdanguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;订单管理</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/xiaoshou_tuigaishenqing.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;退改申请管理</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/xiaoshou_dingdantongji.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;订单统计</a>
+
+										</div>
+									</div>
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;分销商管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/fenxiao_fenxiaoshangjieruguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;分销商接入管理</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/fenxiao_fenxiaoshangguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;分销商管理</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/fenxiao_dengjiguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;分销商等级管理</a>
+
+										</div>
+									</div>
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;财务管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/caiwu_zhanghubangding.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;分销商账户绑定</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/caiwu_xianxiachongzhi.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;线下充值管理</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/caiwu_shourumingxi.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;预存款收入明细</a>
+											<a class="item transition visible sanjiTest" href="fenxiaoshangguanli/caiwu_tixianguanli.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;分销商提现管理</a>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item" style="background-color:#132B57;width: 100%;border: 1px solid #2b4168;padding: 0px;margin-bottom: -12px;">
+								<img src="img/shangjia.png" style="width:30px;margin-left:24px;margin-bottom: -20px;margin-top:-27px;line-height:40px;margin-right: 12px;display: inline-block;" />
+								<a class="title" style="display:inline-block;height:40px;color: white;margin-top:5px;margin-bottom: 10px;padding-top: 15px;"> <b style="font-size: 14px;">商家后台管理</b></a>
+								<div class="content menu" style="margin-left: -10px;margin-top:-10px">
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 10px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;酒店商家管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jiudian_shangjiajibenxinxi.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;商家基本信息</a>
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jiudian_yujijinridaodian.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;预计今日到店</a>
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jiudian_tiqiantuifang.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;提前退房</a>
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jiudian_zonghedingdan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;综合订单</a>
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jiudian_chakanduizhangdan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;查看对账单</a>
+										</div>
+									</div>
+									<div class="accordion visible active transition" style="display: block !important;margin-top:0px !important;background-color: #132B57;">
+										<a class="title " style="display:inline-block;height:20px;color: white;margin-bottom: 13px;margin-left: 50px;padding-top:5px;line-height: 20px;"> <b style="font-size: 14px;">•&nbsp;&nbsp;&nbsp;&nbsp;景区商家管理</b></a>
+										<div class="content menu ">
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jingqu_shangjiajibenxinxi.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;商家基本信息</a>
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jingqu_zonghedingdan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 10px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;综合订单</a>
+											<a class="item transition visible sanjiTest" href="shangjiahoutaiguanli/html/jingqu_chakanduizhangdan.html" target="contentFrame" style="color:#b8b8b8;font-size:14px;padding-bottom: 18px;padding-top: 10px;padding-left: 65px;">•&nbsp;&nbsp;&nbsp;&nbsp;查看对账单</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="article">
+					<div class="ui raised segment" style="margin-top: 90px;height: 40px;margin-bottom: 3px;box-shadow: none;">
+						<div class="ui  breadcrumb" style="margin-top: -15px;">
+							<a class="section">Home</a>
+							<i class="right chevron icon divider"></i>
+							<a class="section">Registration</a>
+							<i class="right chevron icon divider"></i>
+							<div class="active section">Personal Information</div>
+						</div>
+					</div>
+
+					<iframe name="contentFrame" id="contentFrame" scrolling="no" width="100%" frameborder="0" onload="this.height=this.contentWindow.document.documentElement.scrollHeight" frameborder="0"></iframe>
+				</div>
+			</div>
+
+		</div>
+		<script>
+			$(document).ready(function() {
+
+				document.getElementById("contentFrame").setAttribute("src", 'hotel/html/zonghedingdan.html');
+			})
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>财务管理-预存款收入明细</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/tuigaishenqing.css" rel="stylesheet ">
+		<!--<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/2.2.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">-->
+	</head>
+
+	<body>
+		<table class="table_width">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					<span class="times">下单日期：
+						
+					</span>
+				</td>
+				<td class="tr_2">
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+					<span class="times">&nbsp;&nbsp;&nbsp;至：</span>
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+				</td>
+				<td class="tr_1">
+					充值方式：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部方式</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					快速选择：
+				</td>
+				<td class="tr_2">
+					<input class="btn btn-xs" type="button" value="今天">
+					<input class="btn btn-xs" type="button" value="昨天">
+					<input class="btn btn-xs" type="button" value="近一周">
+					<input class="btn btn-xs" type="button" value="近一月">
+					<input class="btn btn-xs" type="button" value="本周">
+					<input class="btn btn-xs" type="button" value="本月">
+				</td>
+				<td> <button class="btn11">查询</button></td>
+			</tr>
+		</table>
+		<br />
+		<table id="tab_manager" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+			<thead>
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th>编号</th>
+					<th>用户名称</th>
+					<th>充值账户</th>
+					<th>日期</th>
+					<th>收入来源</th>
+					<th>用户订单号/交易号</th>
+					<th>收入金额</th>
+					<th>操作人</th>
+					<th>操作说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>1062</td>
+					<td>韩大</td>
+					<td>查看凭证</td>
+					<td>2017-07-02 14:26:30</td>
+					<td>线下充值</td>
+					<td>234323444556</td>
+					<td>1000.00元</td>
+					<td>韩大</td>
+					<td>线下充值</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>2062</td>
+					<td>张三</td>
+					<td>查看凭证</td>
+					<td>2017-07-02 14:26:30</td>
+					<td>线下充值</td>
+					<td>231111444556</td>
+					<td>3000.00元</td>
+					<td>张三</td>
+					<td>线下充值</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>3062</td>
+					<td>李四</td>
+					<td>查看凭证</td>
+					<td>2017-06-02 14:26:30</td>
+					<td>线下充值</td>
+					<td>234323444556</td>
+					<td>2090.00元</td>
+					<td>李四</td>
+					<td>线下充值</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>4062</td>
+					<td>王五</td>
+					<td>查看凭证</td>
+					<td>2017-06-10 14:26:30</td>
+					<td>线下充值</td>
+					<td>1234323444556</td>
+					<td>1800.00元</td>
+					<td>王五</td>
+					<td>线下充值</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>5062</td>
+					<td>赵六</td>
+					<td>查看凭证</td>
+					<td>2017-05-12 14:26:30</td>
+					<td>线下充值</td>
+					<td>234678944556</td>
+					<td>2000.00元</td>
+					<td>赵六</td>
+					<td>线下充值</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>3462</td>
+					<td>天奇</td>
+					<td>查看凭证</td>
+					<td>2017-04-22 14:26:30</td>
+					<td>线下充值</td>
+					<td>234567444556</td>
+					<td>7000.00元</td>
+					<td>天奇</td>
+					<td>线下充值</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<br/>
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+		<!--<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>-->
+		<script src="My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+				format: 'yyyy-MM-dd',
+				language: 'zh-CN',
+				pickTime: false
+			}).on('changeDate', function() {
+				$(this).datetimepicker('hide');
+			});
+			//			$(".form_datetime").datetimepicker({
+			//				format: "yyyy-mm-dd",
+			//				language: 'zh-CN',
+			//				autoclose: true,
+			//				todayBtn: true,
+			//				startDate: "2017-08-01",
+			//				//					minuteStep: 10,
+			//				minView: 2,
+			//				todayHighlight: true,
+			//
+			//			});
+			//			$("#search_start_date").datepicker().on('show', function() {
+			//				//当开始日历显示的时候
+			//				//首先，应该判断结束时间是否为空
+			//				var finishDate = $("#search_end_date").val();
+			//				if(finishDate != null && finishDate != '') {
+			//					//如果不为空，设置开始日历的结束时间
+			//					$('#search_start_date').datepicker('setEndDate', finishDate);
+			//				}
+			//			});
+			//			$("#search_end_date").datepicker().on('show', function() {
+			//
+			//				var startDate = $("#search_start_date").val();
+			//				if(startDate != null && startDate != '') {
+			//
+			//					$('#search_end_date').datepicker('setStartDate', startDate);
+			//				}
+			//			});
+			//
+			//			/*设置清空按钮的click事件*/
+			//			$("#start_date_remove").click(function() {
+			//				$("#search_start_date").val("");
+			//			});
+			//
+			//			/*设置清空按钮的click事件*/
+			//			$("#end_date_remove").click(function() {
+			//				$("#search_end_date").val("");
+			//			});
+		</script>
+	</body>
+
+</html>

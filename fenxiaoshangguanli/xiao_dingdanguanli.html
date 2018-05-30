@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单管理</title>
+		<!--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">-->
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="css/passengerflow.css">
+		<link href="css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+	</head>
+	<style>
+
+	</style>
+
+	<body>
+		<table class="table_">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					酒店名称
+				</td>
+				<td class="tr_2">
+					<input type="text" style="height: 20px;" />
+				</td>
+				<td class="tr_1">
+					是否签约
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;">
+						<option value="volvo">[请选择]</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+						</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					区域商圈
+				</td>
+				<td class="tr_2">
+					<select style="width: 25%;">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+						</select>-
+							<select style="width: 25%;">
+								<option value="volvo">全部</option>
+								<option value="saab">Saab</option>
+								<option value="opel">Opel</option>
+								<option value="audi">Audi</option>
+							</select>
+				</td>
+				<td class="tr_1">
+					酒店星级
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;">
+						<option value="volvo">全部</option>
+						<option value="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					签约截止日期
+				</td>
+				<td class="tr_2">
+					<span class="input-append date form_datetime" data-date="2013-02-21T15:25:00Z">
+							<input size="16" type="text" style="height: 20px;" value="2017-07-15" readonly>
+							<span class="add-on add-on-remove"><i class="icon-remove"></i></span>
+					<span class="add-on"><i class="icon-calendar"></i></span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn" style="float: right;">查询</button></td>
+  			    <td colspan="2"><button class="btn" style="float: left;">重置</button></td>
+  		</tr>
+  	</table>
+  	<table id="travel_table" class="table table-hover" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+					<thead>
+						<tr class="dytop_table_th">
+							<th>公文名称</th>
+							<th>公文部门</th>
+							<th style="width: 150px;;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>关于组织参加首届民族旅游商品博览会的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td2">
+							<td>关于加强旅行社经营管理的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<button type="button" class="btn btn-primary" >查看</button>
+								<button type="button" class="btn btn-primary">下载</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td3">
+							<td>关于开展全盟A级旅游景区集中检查的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<button type="button" class="btn btn-primary">查看</button>
+								<button type="button" class="btn btn-primary">下载</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td">
+							<td>关于报送旅游质监执法机构建立情况的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<button type="button" class="btn btn-primary">查看</button>
+								<button type="button" class="btn btn-primary">下载</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td">
+							<td>关于全面实施旅游行业标准提升旅游服务质量的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<button type="button" class="btn btn-primary">查看</button>
+								<button type="button" class="btn btn-primary">下载</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td">
+							<td>关于开展讲好“锡林郭勒旅游故事”征文的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<button type="button" class="btn btn-primary">查看</button>
+								<button type="button" class="btn btn-primary">下载</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td">
+							<td>关于开展全盟旅游行业安全大检查的通知</td>
+							<td>锡林郭勒盟旅游局</td>
+							<td>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<button type="button" class="btn btn-primary">查看</button>
+								<button type="button" class="btn btn-primary">下载</button>
+								<button type="button" class="btn btn-danger">删除</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1">
+							<td>关于举办全盟“讲好锡林郭勒故事”导游演讲比赛的通知</td>
+							<td>锡林郭勒盟旅游局</a>
+								<td>
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+									<button type="button" class="btn btn-primary">查看</button>
+									<button type="button" class="btn btn-primary">下载</button>
+									<button type="button" class="btn btn-danger">删除</button>
+								</td>
+						</tr>
+					</tbody>
+				</table>
+	</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>财务管理-分销商财务绑定</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/tuigaishenqing.css" rel="stylesheet ">
+
+	</head>
+
+	<body>
+		<table class="table_width">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+			<tr>
+				<!--<td class="tr_1">
+					<span class="times">选择日期：
+						
+					</span>
+				</td>
+				<td class="tr_2">
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+					<span class="times">&nbsp;&nbsp;&nbsp;至：</span>
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+				</td>-->
+				<td class="tr_1">
+					用户编号：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+				<td class="tr_1">
+					银行卡账户：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部</option>
+						<option value="saab">浦发银行</option>
+						<option value="opel">建设银行</option>
+						<option value="audi">工商银行</option>
+						<option value="audi">邮政银行</option>
+						<option value="audi">其他</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="tr_1">
+					用户名称：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+				<td class="tr_1">
+					快速选择：
+				</td>
+				<td class="tr_2" colspan="3">
+					<input class="btn btn-xs" type="button" value="今天">
+					<input class="btn btn-xs" type="button" value="昨天">
+					<input class="btn btn-xs" type="button" value="近一周">
+					<input class="btn btn-xs" type="button" value="近一月">
+					<input class="btn btn-xs" type="button" value="本周">
+					<input class="btn btn-xs" type="button" value="本月">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn11">查询</button></td>
+				<td colspan="2"><button class="btn21">重置</button></td>
+			</tr>
+		</table>
+		<br />
+		<div class="">
+			<table id="tab_manager" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+				<thead>
+					<tr>
+						<th data-field="state" data-checkbox="true"></th>
+						<th>用户</th>
+						<th>用户名称</th>
+						<th>支付宝账户</th>
+						<th>银行卡账户</th>
+						<th>类型</th>
+						<th>状态</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td>
+							<p>1122</p>
+						</td>
+						<td>
+							<p>黄三</p>
+						</td>
+						<td>
+							<p>姓名：黄三</p>
+							<p>账户：12345678</p>
+						</td>
+						<td>
+							<p>用户行：浦发银行</p>
+							<p>用户名：黄三</p>
+							<p>账户号：12345678</p>
+						</td>
+						<td>分销商</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<p>2233</p>
+						</td>
+						<td>
+							<p>李四</p>
+						</td>
+						<td>
+							<p>姓名：李四</p>
+							<p>账户：12345678</p>
+						</td>
+						<td>
+							<p>用户行：建设银行</p>
+							<p>用户名：李四</p>
+							<p>账户号：12345678</p>
+						</td>
+						<td>分销商</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<p>3344</p>
+						</td>
+						<td>
+							<p>王五</p>
+						</td>
+						<td>
+							<p>姓名：王五</p>
+							<p>账户：12345678</p>
+						</td>
+						<td>
+							<p>用户行：农业银行</p>
+							<p>用户名：王五</p>
+							<p>账户号：12345678</p>
+						</td>
+						<td>分销商</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<p>4455</p>
+						</td>
+						<td>
+							<p>赵六</p>
+						</td>
+						<td>
+							<p>姓名：赵六</p>
+							<p>账户：12345678</p>
+						</td>
+						<td>
+							<p>用户行：邮政银行</p>
+							<p>用户名：赵六</p>
+							<p>账户号：12345678</p>
+						</td>
+						<td>分销商</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<p>5566</p>
+						</td>
+						<td>
+							<p>田七</p>
+						</td>
+						<td>
+							<p>姓名：天气</p>
+							<p>账户：12345678</p>
+						</td>
+						<td>
+							<p>用户行：工商银行</p>
+							<p>用户名：田七</p>
+							<p>账户号：12345678</p>
+						</td>
+						<td>分销商</td>
+						<td>正常</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<p>4422</p>
+						</td>
+						<td>
+							<p>罗坝</p>
+						</td>
+						<td>
+							<p>姓名：罗坝</p>
+							<p>账户：12345678</p>
+						</td>
+						<td>
+							<p>用户行：广发银行</p>
+							<p>用户名：罗坝</p>
+							<p>账户号：12345678</p>
+						</td>
+						<td>分销商</td>
+						<td>正常</td>
+				</tbody>
+			</table>
+		</div>
+
+		<br/>
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+
+	</body>
+
+</html>

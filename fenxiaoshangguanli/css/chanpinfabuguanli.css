@@ -1,0 +1,44 @@
+/*表格按钮*/
+.pagination ul>.active>a, .pagination ul>.active>span {
+    background-color: #337ab7!important;
+}
+.pagination ul>.active>a, .pagination ul>.active>span {
+    color: white;
+    cursor: default;
+}
+.fixed-table-container tbody td {
+    border-left: 0px solid #759AA0;
+}
+.pay_width{
+	width: 70%;
+}
+.sale_width{
+	width: 40%;
+}
+.buy_width{
+	width: 10%;
+}
+.inner_table{
+	background-color: gainsboro;
+	margin-top: 6px;
+	width: 100%;
+}
+.textalign_right{
+	text-align: right;
+}
+.textalign_center{
+	text-align: center;
+}
+.text_color{
+	color: green;
+}
+.text_greycolor{
+	color: darkgray;
+}
+.padding15{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.margin_top10{
+	margin-top: 10px;
+}

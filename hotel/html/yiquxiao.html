@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>景区签约管理</title>
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="../css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="../js/bootstrap-table.min.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="../css/passengerflow.css">
+		<link href="../css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+		 
+<script src="../My97DatePicker/WdatePicker.js"></script>  
+ <script type="text/javascript">  
+      $('#datetimepicker').datetimepicker({  
+        format: 'yyyy-MM-dd',  
+        language: 'zh-CN',  
+                   pickTime: false  
+      }).on('changeDate',function(){  
+                   $(this).datetimepicker('hide');  
+           });  
+    </script>  
+		  <style>
+  		.tb_th{
+  		background-color: #67ace0;
+  		width: 25%;
+  		text-align: left;
+  	}
+  	.tr_1{
+  		background-color: #deedf9;
+    width: 25%;
+    text-align: right;
+    padding-right: 10px;
+    border: 1px solid #dce3e8;
+  	}
+  	.tr_2{
+  		width: 25%;
+  		background-color: #F7FAFD;
+  		 padding-left: 10px;
+  		 border: 1px solid #dce3e8;
+  	}
+  	.table_{
+  		    width: 100%;
+    border: 1px solid #deedf9;
+    /* position: relative; */
+    /* left: 0%; */
+    /*position: absolute;*/
+    left: 0%;
+        margin-bottom: 2%;
+  	}
+  	.btn1{
+  		    width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color:#3475A9;
+    margin-left: 80%;
+    color: white;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  	}
+  	.btn2{
+  		 width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color: #3475A9;
+    margin-left: 0px;
+     color: white;
+  	}
+  		.dytop_table_td1{
+  		text-align: center;
+  	}
+   #travel_table > thead > tr > th
+  	{
+  		text-align: center;
+  	}
+  </style>
+
+	</head>
+	<body>
+		<table class="table_">
+  		<tr>
+  			<th colspan="4" class="tb_th">查询条件 </th>
+  		</tr>
+  		<tr>
+  			<td class="tr_1">
+  			订单编号
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  			<td class="tr_1">
+  				订单状态
+  			</td>
+  			<td class="tr_2">
+				已取消
+  			</td>
+  		</tr>
+  		<tr>
+  			<td class="tr_1">
+  			价格范围
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="width: 25%; height: 20px;"/>-
+  			<input type="text" style="width: 25%; height: 20px;"/>（按现价计算）
+  			</td>
+  			<td class="tr_1">
+  				下单时间
+  			</td>
+  			<td class="tr_2">
+  				 
+      <input type="text"  class="Wdate" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:false,readOnly:true})"></input> -
+      <input type="text"  class="Wdate" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:false,readOnly:true})"></input> 
+ 
+  			</td>
+  		</tr>
+
+  		<tr>
+  			
+  			<td class="tr_1">
+  			用户手机号
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  			<td class="tr_1">
+  			预定人
+  			</td>
+  			<td class="tr_2">
+  				<input type="text" style="height: 20px;"/>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2"><button class="btn1">查询</button></td>
+  			<td colspan="2"><button class="btn2">重置</button></td>
+  		</tr>
+  	</table>
+  	
+<table id="travel_table" class="table table-hover" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+					<thead>
+						<tr class="dytop_table_th">
+							<th>订单编号</th>
+							<th>订单名称</th>
+							<th>数量</th>
+							<th>总价</th>
+							<th>订单状态</th>
+							<th>是否回访</th>
+							<th>下单时间</th>
+							<th>到店时间</th>
+							<th style="width: 50px;;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>313242144</td>
+							<td>内蒙古玖苑国际饭店-豪华套房</td>
+							<td>1</td>
+							<td>3000.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.3.11 13：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>15123144</td>
+							<td>锡林浩特蒙锡雅饭店  -标准间a座</td>
+							<td>1</td>
+							<td>380.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.22 8：00</td>
+							<td>10：00-12：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>593753212</td>
+							<td>锡林浩特百花祥禄宾馆 -豪华双人房</td>
+							<td>1</td>
+							<td>236.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.7.17 15：00</td>
+							<td>15：00-17：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>413124112</td>
+							<td>锡林浩特虹皓商务宾馆  -麻将房</td>
+							<td>1</td>
+							<td>209.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.8.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>102312123</td>
+							<td>锡林郭勒元和建国饭店-普通大床房</td>
+							<td>1</td>
+							<td>499.00</td>
+							<td>已取消</td>
+							<td>未回访</td>
+							<td>2017.6.14 11：00</td>
+							<td>14：00-16：00</td>
+							<td>
+								<!--<button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+								<a href="gongwenxiangqing.html">-->
+									<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+								<!--</a> 
+								<a href="pdf/关于组织参加首届民族旅游商品博览会的通知.pdf" download="关于组织参加首届民族旅游商品博览会的通知"><button type="button" class="btn btn-primary">下载</button></a>-->
+								<button type="button" class="btn btn-danger" onclick="delete_tr()">编辑</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+	</body>
+</html>

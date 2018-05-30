@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>牧人之家-账目操作</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/tuigaishenqing.css" rel="stylesheet ">
+		<link href="css/bootstrap-datetimepicker.css" rel="stylesheet ">
+		<!--<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/2.2.2/css/bootstrap.min.css">-->
+		<!--<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">-->
+	</head>
+
+	<body>
+		<table class="table_width">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+				<td class="tr_1">
+					账单号：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+				<td class="tr_1">
+					<span class="times">账目操作日期：
+						
+					</span>
+				</td>
+				<td class="tr_2">
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+					<!--<span class="times">&nbsp;&nbsp;&nbsp;至：</span>
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>-->
+				</td>
+			</tr>
+			<tr>
+				<td class="tr_1">
+					预收收款：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+				<td class="tr_1">
+					结账收款：
+				</td>
+				<td class="tr_2">
+					<input class="input_style" type="text" placeholder="" style="margin-bottom: 0px;">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn11">查询</button></td>
+				<td colspan="2"><button class="btn21">重置</button></td>
+			</tr>
+	
+		</table>
+		<br />
+		<table id="tab_manager" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+			<thead>
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th>账单号</th>
+					<th>预收收款</th>
+					<th>结账收款</th>
+					<th>账目操作日期</th>
+					<th>账目操作</th>
+					<!--<th>操作</th>-->
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>124500001</td>
+					<td>￥50</td>
+					<td>￥100</td>
+					<td>
+						<p>2017-07-02</p>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">修改</button>
+						<button type="button" class="btn btn-primary">转账</button>
+						<button type="button" class="btn btn-primary">冲账</button>
+						<button type="button" class="btn btn-primary">快速分单</button>
+						<button type="button" class="btn btn-primary">账目行结</button>
+						<button type="button" class="btn btn-danger">详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>124500002</td>
+					<td>￥50</td>
+					<td>￥150</td>
+					<td>
+						<p>2017-06-22</p>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">修改</button>
+						<button type="button" class="btn btn-primary">转账</button>
+						<button type="button" class="btn btn-primary">冲账</button>
+						<button type="button" class="btn btn-primary">快速分单</button>
+						<button type="button" class="btn btn-primary">账目行结</button>
+						<button type="button" class="btn btn-danger">详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>124500003</td>
+					<td>￥60</td>
+					<td>￥100</td>
+					<td>
+						<p>2017-06-12</p>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">修改</button>
+						<button type="button" class="btn btn-primary">转账</button>
+						<button type="button" class="btn btn-primary">冲账</button>
+						<button type="button" class="btn btn-primary">快速分单</button>
+						<button type="button" class="btn btn-primary">账目行结</button>
+						<button type="button" class="btn btn-danger">详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>124500004</td>
+					<td>￥50</td>
+					<td>￥100</td>
+					<td>
+						<p>2017-06-02</p>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">修改</button>
+						<button type="button" class="btn btn-primary">转账</button>
+						<button type="button" class="btn btn-primary">冲账</button>
+						<button type="button" class="btn btn-primary">快速分单</button>
+						<button type="button" class="btn btn-primary">账目行结</button>
+						<button type="button" class="btn btn-danger">详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>124500005</td>
+					<td>￥50</td>
+					<td>￥150</td>
+					<td>
+						<p>2017-05-23</p>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">修改</button>
+						<button type="button" class="btn btn-primary">转账</button>
+						<button type="button" class="btn btn-primary">冲账</button>
+						<button type="button" class="btn btn-primary">快速分单</button>
+						<button type="button" class="btn btn-primary">账目行结</button>
+						<button type="button" class="btn btn-danger">详情</button>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>124500006</td>
+					<td>￥100</td>
+					<td>￥100</td>
+					<td>
+						<p>2017-05-01</p>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">修改</button>
+						<button type="button" class="btn btn-primary">转账</button>
+						<button type="button" class="btn btn-primary">冲账</button>
+						<button type="button" class="btn btn-primary">快速分单</button>
+						<button type="button" class="btn btn-primary">账目行结</button>
+						<button type="button" class="btn btn-danger">详情</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<br/>
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+		<!--<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>-->
+		<script src="My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+				format: 'yyyy-MM-dd',
+				language: 'zh-CN',
+				pickTime: false
+			}).on('changeDate', function() {
+				$(this).datetimepicker('hide');
+			});
+			//			$(".form_datetime").datetimepicker({
+			//				format: "yyyy-mm-dd",
+			//				language: 'zh-CN',
+			//				autoclose: true,
+			//				todayBtn: true,
+			//				startDate: "2017-08-01",
+			//				//					minuteStep: 10,
+			//				minView: 2,
+			//				todayHighlight: true,
+			//
+			//			});
+			//			$("#search_start_date").datepicker().on('show', function() {
+			//				//当开始日历显示的时候
+			//				//首先，应该判断结束时间是否为空
+			//				var finishDate = $("#search_end_date").val();
+			//				if(finishDate != null && finishDate != '') {
+			//					//如果不为空，设置开始日历的结束时间
+			//					$('#search_start_date').datepicker('setEndDate', finishDate);
+			//				}
+			//			});
+			//			$("#search_end_date").datepicker().on('show', function() {
+			//
+			//				var startDate = $("#search_start_date").val();
+			//				if(startDate != null && startDate != '') {
+			//
+			//					$('#search_end_date').datepicker('setStartDate', startDate);
+			//				}
+			//			});
+			//
+			//			/*设置清空按钮的click事件*/
+			//			$("#start_date_remove").click(function() {
+			//				$("#search_start_date").val("");
+			//			});
+			//
+			//			/*设置清空按钮的click事件*/
+			//			$("#end_date_remove").click(function() {
+			//				$("#search_end_date").val("");
+			//			});
+		</script>
+	</body>
+
+</html>

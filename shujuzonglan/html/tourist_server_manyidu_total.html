@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name=renderer content=webkit>
+		<title>景区服务满意度统计</title>
+		<script src="../js/echarts.js"></script>
+		<script src="../js/jquery.min.js"></script>
+
+		<style>
+			#body1 {
+				margin-top: -1px;
+			}
+			
+			#main {
+				width: 100%;
+				height: 450px;
+			}
+			
+			#main1 {
+				float: left;
+				width: 40%;
+				height: 440px;
+				
+			}
+			
+			#main2 {
+				float: left;
+				width: 58%;
+				height:440px;
+				
+			}
+			/*.btn-group{
+				width: 1100px;height: 21px;background-color: white;
+			}*/
+			
+			#foot {
+				width: 100%;
+				height: 400px;
+			}
+			
+			#foot1 {
+				width: 40%;
+				height: 370px;
+				position: relative;
+				left: 5px;
+				top: 5px;
+				/*z-index: -1;*/
+			}
+			
+			#foot2 {
+				width: 57.1%;
+				height: 370px;
+				position: absolute;
+				left: 41.45%;
+				top: 364px;
+				;
+				/*z-index: -1;*/
+			}
+			
+			#btn1 {
+				/*z-index: -2;*/
+				width: 440px;
+				height: 10px;
+				background-color: white;
+			}
+			
+			#btn2 {
+				z-index: -2;
+				width: 640px;
+				height: 10px;
+				background-color: white;
+			}
+			
+			#foot21 {
+				float: left;
+				width: 440px;
+				height: 390px;
+				border: 5px solid #eff1ff;
+			}
+			
+			#foot22 {
+				float: left;
+				width: 640px;
+				height: 390px;
+				border: 5px solid #eff1ff;
+			}
+			
+			#btn11 {
+				
+				position: relative;
+				left: 20%;
+				
+				bottom: 356px;
+				width: 62px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: white;
+				background-color: #027AE0;
+				border: 1px solid #027AE0;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+			
+			#btn12 {
+				
+				position: relative;
+				left: 19.4546%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px;
+			}
+			
+			#btn13 {
+				
+				position: relative;
+				left: 19%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			
+			#btn21 {
+				position: relative;
+				left: 60%;
+				;
+				bottom: 356px;
+				width: 62px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: white;
+				background-color: #027AE0;
+				border: 1px solid #027AE0;
+				border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;
+			}
+			
+			#btn22 {
+				position: relative;
+				left: 59.3637%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 0px;
+				border-bottom-right-radius: 0px;
+				/*border-top-left-radius: 5px;
+				border-bottom-left-radius: 5px;*/
+			}
+			
+			#btn23 {
+				position: relative;
+				left: 58.8182%;
+				bottom: 356px;
+				width: 64px;
+				margin-bottom: 3px;
+				font-size: 12px;
+				color: #027AE0;
+				background-color: white;
+				border: 1px solid #027AE0;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+
+				var echarts_main = echarts.init(document.getElementById("main1"));
+				var option = {
+    backgroundColor: 'white',
+					title: {
+						top: '3%',
+						left: '2%',
+						text: '▌景区评价情况占比',
+						textStyle: {
+							color: '#EEB300',
+							fontSize: 15
+						},
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+       orient: 'horizontal',
+        top:410,
+        left:170,
+        
+        data: ['好评','差评']
+    },
+    series : [
+        {
+            name: '景区评价情况',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '50%'],
+            data:[
+                {value:300, name:'好评'},
+                {value:120, name:'差评'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+				echarts_main.setOption(option);
+			})
+		</script>
+		
+		<script>
+		$(document).ready(function() {
+				var echarts_main = echarts.init(document.getElementById("main2"));
+				var option = {
+					backgroundColor: 'white',
+					title: {
+						text: '▌景区评价数据统计',
+						top: '3%',
+						left: '2%',
+
+						textStyle: {
+							color: '#EEB300',
+							fontSize: 15
+						}
+					},
+					tooltip: {
+						trigger: 'axis',
+						axisPointer: { // 坐标轴指示器，坐标轴触发有效
+							type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					legend: {
+						orient: 'horizontal',
+						//	
+						top:20,
+						top: 'bottom',
+						bottom: '3%',
+						data: ['好评', '差评']
+					},
+					grid: {
+						top:80,
+						left: '3.5%',
+						right: '2%',
+						bottom: '13%',
+						containLabel: true
+					},
+					xAxis: [{
+						axisLabel: {
+							interval: 0,
+//							rotate: 25,
+							margin: 10,
+
+						},
+						data: ['贝子庙', '多伦湖', '蒙古汗城', '元上都遗址', '灰腾草原'],
+
+					}],
+					yAxis: [{
+						type: 'value',
+						name: '数量（条）',
+						axisLabel: {
+							textStyle: {
+								color: "#646464"
+							}
+						},
+						splitLine: {
+							show: true,
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: ['#d9d9d9'],
+								type: 'dashed',
+							}
+						},
+						axisLine: {
+							lineStyle: {
+								color: '#999999'
+							}
+						}
+					}],
+					series: [{
+							name: '好评',
+							type: 'bar',
+							barWidth:'20%',
+							data: [400, 350, 500, 550, 490],
+						}, {
+							name: '差评',
+							type: 'bar',
+							barWidth:'20%',
+							data: [150, 130, 140, 110, 160],
+						}
+
+					]
+				};
+				echarts_main.setOption(option);
+			})
+		</script>
+	</head>
+
+	<body id="body1">
+		<div id="main">
+			<div id="main1"></div>
+			<div id="main2"></div>
+		</div>
+
+		
+	
+	</body>
+
+</html>

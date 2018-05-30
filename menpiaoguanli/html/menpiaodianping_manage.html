@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>门票点评管理</title>
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="../css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="../js/bootstrap-table.min.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="../css/passengerflow.css">
+		<link href="../css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-
+
+master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-
+
+master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-
+
+datetimepicker.css">
+		<script src="../My97DatePicker/WdatePicker.js"></script>
+
+		<style>
+			.tb_th1 {
+				background-color: #67ace0;
+				width: 25%;
+				text-align: left;
+			}
+			
+			.tr_11 {
+				background-color: #deedf9;
+				width: 25%;
+				text-align: right;
+				padding-right: 10px;
+				border: 1px solid #dce3e8;
+			}
+			
+			.tr_21 {
+				width: 25%;
+				background-color: #F7FAFD;
+				padding-left: 10px;
+				border: 1px solid #dce3e8;
+			}
+			
+			.table_1 {
+				width: 100%;
+				border: 1px solid #deedf9;
+				/* position: relative; */
+				/* left: 0%; */
+				/*position: absolute;*/
+				left: 0%;
+				margin-bottom: 2%;
+			}
+			
+			.btn11 {
+				width: 82px;
+				/* float: right; */
+				border-radius: 5px;
+				background-color: #3475A9;
+				margin-left: 80%;
+				color: white;
+				margin-top: 0.5%;
+				margin-bottom: 0.5%;
+			}
+			
+			.btn21 {
+				width: 82px;
+				/* float: right; */
+				border-radius: 5px;
+				background-color: #3475A9;
+				margin-left: 0px;
+				color: white;
+			}
+			.dytop_table_td1{
+  		text-align: center;
+  	}
+   #travel_table > thead > tr > th
+  	{
+  		text-align: center;
+  	}
+
+		</style>
+
+	</head>
+
+	<body>
+		<table class="table_1">
+			<tr>
+				<th colspan="4" class="tb_th1">查询条件 </th>
+			</tr>
+			<tr>
+				
+				
+				<td class="tr_11">
+					门票名称
+				</td>
+				<td class="tr_21">
+					<input type="text" style="width: 50%;height: 23px;" />
+				</td>
+				<td class="tr_11">
+					点评关键字
+				</td>
+				<td class="tr_21">
+					<input type="text" style="width: 50%;height: 25px;" />
+				</td>
+				
+				
+			</tr>
+			<tr>
+				<td class="tr_11">
+					综合分
+				</td>
+				<td class="tr_21">
+					<input type="text" style="width: 20%;height: 25px;" />
+					&nbsp;至&nbsp;&nbsp;<input type="text" style="width: 20%;height: 25px;" />
+				</td>
+				<td class="tr_11">
+					
+				</td>
+				<td class="tr_21">
+					
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"><button class="btn11">查询</button></td>
+				<td colspan="2"><button class="btn21">重置</button></td>
+			</tr>
+		</table>
+
+		<table id="travel_table" class="table table-hover" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+			<thead>
+				<tr class="dytop_table_th">
+					<th>序号</th>
+					<th>门票名称</th>
+					<th>综合</th>
+					<th>价格</th>
+					<th>交通</th>
+					<th>环境</th>
+					<th>安全</th>
+					<th>人数</th>
+					
+					<th>点评关键字</th>
+					<th style="width: 150px;;">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>1</td>
+					<td>贝子庙成人票</td>
+					<td>4.8</td>
+					<td>4.6</td>
+					<td>4.8</td>
+					<td>4.6</td>
+					<td>4.5</td>
+					<td>10</td>
+					
+					<td>推荐参观</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="#">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>2</td>
+					<td>锡林郭勒马文化博物馆秒杀价</td>
+					<td>4.5</td>
+					<td>4.7</td>
+					<td>4.5</td>
+					<td>4.6</td>
+					<td>4.5</td>
+					<td>8</td>
+					
+					<td>悠久历史</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="#">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>3</td>
+					<td>汇宗寺成人票</td>
+					<td>4.7</td>
+					<td>4.5</td>
+					<td>4.6</td>
+					<td>4.5</td>
+					<td>4.6</td>
+					<td>5</td>
+					
+					<td>建筑独特</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="gongwenxiangqing.html">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>4</td>
+					<td>多伦湖学生票</td>
+					<td>4.8</td>
+					<td>4.4</td>
+					<td>4.6</td>
+					<td>4.7</td>
+					<td>4.5</td>
+					<td>2</td>
+					
+					<td>风景美</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="gongwenxiangqing.html">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>5</td>
+					<td>锡林郭勒草原成人票</td>
+					<td>4.8</td>
+					<td>4.6</td>
+					<td>4.6</td>
+					<td>4.5</td>
+					<td>4.5</td>
+					<td>3</td>
+					
+					<td>草原景色迷人</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="gongwenxiangqing.html">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>6</td>
+					<td>金莲川草原秒杀价</td>
+					<td>4.7</td>
+					<td>4.5</td>
+					<td>4.6</td>
+					<td>4.4</td>
+					<td>4.5</td>
+					<td>2</td>
+					
+					<td>民族风情独特</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="gongwenxiangqing.html">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+
+				<tr class="dytop_table_td1" id="delete_table">
+					<td>7</td>
+					<td>锡林九曲成人票</td>
+					<td>4.6</td>
+					<td>4.5</td>
+					<td>4.7</td>
+					<td>4.5</td>
+					<td>4.6</td>
+					<td>4</td>
+					
+					<td>河水清澈,绿草如茵</td>
+
+					<td>
+						<button type="button" class="btn 
+
+btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<a href="gongwenxiangqing.html">
+							<button type="button" class="btn btn-primary">
+									  查看
+									</button>
+						</a>
+						<a href="#"><button type="button" class="btn btn-primary">下载</button></a>
+						<button type="button" class="btn 
+
+btn-danger" onclick="delete_tr()">删除</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+
+</html>

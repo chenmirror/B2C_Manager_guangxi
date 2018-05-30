@@ -1,0 +1,78 @@
+body{
+    padding:0;
+    margin:0;
+    /*background: #EFF1FF;*/
+}
+
+.container{
+    width:95%;
+    background:#fff;
+    height: 330px;
+    margin: 0 auto;
+   margin-bottom: 10px;
+}
+.pie{
+    width:95%;
+    background:#fff;
+    height: 280px;
+    margin: 0 auto;
+}
+#div_hotel_week{
+    float: left;
+    width: 50%;
+    height: 280px;
+}
+#div_house_week{
+    float: right;
+    width: 50%;
+    height: 280px;
+}
+.button{
+    margin-top: 10px;
+    margin-left: 775px;
+}
+#div_week{
+     width:100%;
+    margin:0 auto;
+     height:310px;
+ }
+#btn_week{
+    position: relative;
+    left: 850px;
+    bottom: 295px;
+    width: 60px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: white;
+    background-color: #027AE0;
+    border: 1px solid #027AE0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#btn_month{
+    position: relative;
+    left: 844px;
+    bottom: 295px;
+    width: 60px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: #027AE0;
+    background-color: white;
+    border: 1px solid #027AE0;
+  /*  border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;*/
+}
+#btn_year{
+    position: relative;
+    left: 840px;
+    bottom: 295px;
+    width: 60px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: #027AE0;
+    background-color: white;
+    border: 1px solid #027AE0;
+    border-left:none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>牧人之家-客账查询</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css " rel="stylesheet ">
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<link href="css/bootstrap-table.min.css" rel="stylesheet ">
+		<link href="css/tuigaishenqing.css" rel="stylesheet ">
+		<!--<link href="css/bootstrap-datetimepicker.css" rel="stylesheet ">-->
+		<!--<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/2.2.2/css/bootstrap.min.css">-->
+		<!--<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">-->
+	</head>
+
+	<body>
+		<table class="table_width">
+			<tr>
+				<th colspan="4" class="tb_th">查询条件 </th>
+			</tr>
+				<td class="tr_1">
+					账单类型：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部</option>
+						<option value="saab">电子账单</option>
+						<option value="opel">纸质账单</option>
+					</select>
+				</td>
+				<td class="tr_1">
+					账页类型：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部</option>
+						<option value="saab">三栏式</option>
+						<option value="opel">多栏式</option>
+						<option value="audi">数量金额式</option>
+						<option value="audi">卡片式</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<tr>
+				<td class="tr_1">
+					<span class="times">账目发生日期：
+						
+					</span>
+				</td>
+				<td class="tr_2">
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+					<span class="times">&nbsp;&nbsp;&nbsp;至：</span>
+					<input type="text" class="Wdate key_width" style="margin-bottom: 0px;" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:true,readOnly:true})"></input>
+				</td>
+				<td class="tr_1">
+					结账金额范围：
+				</td>
+				<td class="tr_2">
+					<select style="width: 50%;" class="margin_bottom0">
+						<option value="volvo">全部</option>
+						<option value="saab">100以下</option>
+						<option value="opel">100~200</option>
+						<option value="audi">200以上</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><button class="btn11">查询</button></td>
+				<td colspan="2"><button class="btn21">重置</button></td>
+			</tr>
+	
+		</table>
+		<br />
+		<table id="tab_manager" data-toggle="table" data-url="#" data-page-size="5" data-pagination="true">
+			<thead>
+				<tr>
+					<th data-field="state" data-checkbox="true"></th>
+					<th>账单类型</th>
+					<th>账页类型</th>
+					<th>账目发生日期</th>
+					<th>结账金额范围</th>
+					<!--<th>操作</th>-->
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td></td>
+					<td>电子账单</td>
+					<td>数量金额式</td>
+					<td>
+						<p>2017-07-02</p>
+					</td>
+					<td>￥100.00</td>
+					<!--<td>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal">发布</button>
+						<button type="button" class="btn btn-primary">查看</button>
+						<button type="button" class="btn btn-primary">下载</button>
+						<button type="button" class="btn btn-danger">删除</button>
+					</td>-->
+				</tr>
+				<tr>
+					<td></td>
+					<td>纸质账单</td>
+					<td>多栏式</td>
+					<td>
+						<p>2017-06-22</p>
+					</td>
+					<td>￥160.00</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>纸质账单</td>
+					<td>三栏式</td>
+					<td>
+						<p>2017-05-24</p>
+					</td>
+					<td>￥190.00</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>电子账单</td>
+					<td>数量金额式</td>
+					<td>
+						<p>2017-04-02</p>
+					</td>
+					<td>￥90.00</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>电子账单</td>
+					<td>多栏式</td>
+					<td>
+						<p>2017-03-27</p>
+					</td>
+					<td>￥100.00</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>纸质账单</td>
+					<td>数量金额式</td>
+					<td>
+						<p>2017-03-12</p>
+					</td>
+					<td>￥300.00</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<br/>
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/bootstrap-table.min.js"></script>
+		<script src="js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/bootstrap-table-export.min.js"></script>
+		<script src="js/bootstrap-table-export.js"></script>
+		<!--<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="./bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>-->
+		<script src="My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+			$('#datetimepicker').datetimepicker({
+				format: 'yyyy-MM-dd',
+				language: 'zh-CN',
+				pickTime: false
+			}).on('changeDate', function() {
+				$(this).datetimepicker('hide');
+			});
+			//			$(".form_datetime").datetimepicker({
+			//				format: "yyyy-mm-dd",
+			//				language: 'zh-CN',
+			//				autoclose: true,
+			//				todayBtn: true,
+			//				startDate: "2017-08-01",
+			//				//					minuteStep: 10,
+			//				minView: 2,
+			//				todayHighlight: true,
+			//
+			//			});
+			//			$("#search_start_date").datepicker().on('show', function() {
+			//				//当开始日历显示的时候
+			//				//首先，应该判断结束时间是否为空
+			//				var finishDate = $("#search_end_date").val();
+			//				if(finishDate != null && finishDate != '') {
+			//					//如果不为空，设置开始日历的结束时间
+			//					$('#search_start_date').datepicker('setEndDate', finishDate);
+			//				}
+			//			});
+			//			$("#search_end_date").datepicker().on('show', function() {
+			//
+			//				var startDate = $("#search_start_date").val();
+			//				if(startDate != null && startDate != '') {
+			//
+			//					$('#search_end_date').datepicker('setStartDate', startDate);
+			//				}
+			//			});
+			//
+			//			/*设置清空按钮的click事件*/
+			//			$("#start_date_remove").click(function() {
+			//				$("#search_start_date").val("");
+			//			});
+			//
+			//			/*设置清空按钮的click事件*/
+			//			$("#end_date_remove").click(function() {
+			//				$("#search_end_date").val("");
+			//			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,64 @@
+.tb_th {
+	background-color: #67ace0;
+	width: 25%;
+	text-align: left;
+}
+
+.tr_1 {
+	background-color: #deedf9;
+	width: 25%;
+	text-align: right;
+	border-top: 1px solid white;
+}
+
+.tr_2 {
+	width: 25%;
+	border-top: 1px solid white;
+	background-color: #f7fafd;
+}
+
+.table_width {
+	width: 100%;
+}
+/*表格按钮*/
+.pagination ul>.active>a, .pagination ul>.active>span {
+    background-color: #337ab7!important;
+}
+.pagination ul>.active>a, .pagination ul>.active>span {
+    color: white;
+    cursor: default;
+}
+th{
+	background: #67ace0;
+}
+.div_height{
+	height: 360px;
+}
+.key_width {
+	width: 35%;
+}
+
+.btn11 {
+	width: 82px;
+	/* float: right; */
+	border-radius: 5px;
+	background-color: #3475A9;
+	margin-left: 80%;
+	color: white;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+}
+
+.btn21 {
+	width: 82px;
+	/* float: right; */
+	border-radius: 5px;
+	background-color: #3475A9;
+	margin-left: 0px;
+	color: white;
+}
+
+.input_style {
+	width: 50%;
+	height: 23px;
+}

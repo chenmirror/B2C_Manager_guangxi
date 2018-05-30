@@ -1,0 +1,67 @@
+body{
+	padding: 0;
+	margin: 0;
+	/*background: #EFF1FF;*/
+}
+.container{
+	width: 98%;
+	background: #EFF1FF;
+}
+.order{
+	width: 49.5%;
+	height: 300px;
+	float: left;
+	margin-bottom: 15px;
+}
+.rate{
+	width: 49.5%;
+	height: 300px;
+	float: right;
+	margin-bottom: 15px;
+	margin-top: -22px;
+}
+.facility{
+	width: 49.5%;
+	height: 300px;
+	float: left;
+	margin-bottom: 15px;
+}	
+.satisfaction{
+	width: 49.5%;
+	height: 300px;
+	float: right;
+	margin-bottom: 15px;
+}
+.three{
+    width: 62px;
+    font-size: 12px;
+    color: #027AE0;
+    background-color: white;
+    border: 1px solid #027AE0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.halfyear{
+    width: 60px;
+    margin-left: -4px;
+    font-size: 12px;
+    color: #027AE0;
+    background-color: white;
+    border: 1px solid #027AE0;
+    border-left:none;
+}
+.year{
+    width: 60px;
+    margin-left: -4px;
+    font-size: 12px;
+    color: white;
+    background-color: #027AE0;
+    border: 1px solid #027AE0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.button{
+	position: relative;
+	left: -190px;
+	top:10px;
+}

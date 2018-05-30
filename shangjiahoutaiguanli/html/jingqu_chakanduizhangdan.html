@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>查看对账单</title>
+		 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css " rel="stylesheet ">
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<link href="../css/bootstrap-table.min.css" rel="stylesheet ">
+		<script src="../js/bootstrap-table.min.js"></script>
+		<script src="../js/bootstrap-table-zh-CN.js"></script>
+		<link rel="stylesheet" href="../css/passengerflow.css">
+		<link href="../css/chanpinguanli.css" rel="stylesheet ">
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css">
+<script src="../My97DatePicker/WdatePicker.js"></script>  
+ 
+		  <style>
+	  	.tb_th1{
+	  		background-color: #67ace0;
+	  		width: 25%;
+	  		text-align: left;
+	  	}
+	  	.tr_11{
+	  		background-color: #deedf9;
+	    width: 25%;
+	    text-align: right;
+	    padding-right: 10px;
+	    border: 1px solid #dce3e8;
+	  	}
+	  	.tr_21{
+	  		width: 25%;
+	  		background-color: #F7FAFD;
+	  		 padding-left: 10px;
+	  		 border: 1px solid #dce3e8;
+	  	}
+	  	.table_1{
+	  		    width: 100%;
+	    border: 1px solid #deedf9;
+	    /* position: relative; */
+	    /* left: 0%; */
+	    /*position: absolute;*/
+	    left: 0%;
+	        margin-bottom: 2%;
+	  	}
+	  	.btn11{
+  		    width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color:#3475A9;
+    margin-left: 85%;
+    color: white;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  	}
+  	.btn21{
+  		 width: 82px;
+    /* float: right; */
+    border-radius: 5px;
+    background-color: #3475A9;
+     color: white;
+     margin-top: 0.5%;
+    margin-bottom: 0.5%;
+  	}
+	  	.ly_td1{
+	  		color: #149BDF;
+	  		text-align: left;
+	  	}
+	  	.ly_tr{
+	  		text-align: center;
+	  	}
+	  	.ly_td{
+	  		color: red;
+	  		text-align: center;
+	  	}
+  </style>
+
+	</head>
+	<body>
+		<table class="table_1">
+  		<tr>
+  			<th colspan="4" class="tb_th1">查询条件 </th>
+  		</tr>
+  		<tr>
+  			<td class="tr_11">
+  				订单编号
+  			</td>
+  			<td class="tr_21">
+  				<input type="text" style="width: 50%;height: 23px;"/>
+  			</td>
+  			<td class="tr_11">
+  				门票名称
+  			</td>
+  			<td class="tr_21">
+  				<input type="text" style="width: 50%;height: 23px;"/>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td class="tr_11">
+  				门票类型
+  			</td>
+  			<td class="tr_21">
+				<select style="width: 50%;">
+				  <option value="volvo">[请选择]</option>
+				  <option value="saab">全部</option>
+				  <option value="opel">特价票</option>
+				  <option value="opel">老人学生票</option>
+				  <option value="opel">成人票</option>
+				</select>
+  			</td>
+  			<td class="tr_11">
+  				消费时间
+  			</td>
+  			<td class="tr_21">
+      			<input type="text" style="height: 23px;width: 40%;" class="Wdate" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:false,readOnly:true})"></input>至  
+  				<input type="text" style="height: 23px;width: 40%;" class="Wdate" onkeyup="checkBirthday(this)" onFocus="WdatePicker({isShowClear:false,readOnly:true})"></input>  
+
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2"><button class="btn11">查询</button></td>
+  			<td colspan="2"><button class="btn21">导出</button></td>
+  		</tr>
+  	</table>
+
+
+<table id="travel_table" class="table table-hover" data-toggle="table" data-url="#" data-page-size="15" data-pagination="true">
+					<thead>
+						<tr>
+							<th class="ly_tr">订单类型</th>
+							<th class="ly_tr">门票名称</th>
+							<th class="ly_tr">订单编号</th>
+							<th class="ly_tr">消费时间</th>
+							<th class="ly_tr">支付方式</th>
+							<th class="ly_tr">订单数量</th>
+							<th class="ly_tr">订单金额</th>
+							<th class="ly_tr">平台收款</th>
+							<th class="ly_tr">商户收款</th>
+							<th class="ly_tr">结算开支</th>
+							<th class="ly_tr">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr class="dytop_table_td1" id="delete_table">
+							<td>单一票</td>
+							<td>贝子庙成人票</td>
+							<td>...0827</td>
+							<td>2014-11-01 03:12:01</td>
+							<td>线上</td>
+							<td>2份</td>
+							<td>154.00</td>
+							<td>156.00</td>
+							<td>0.00</td>
+							<td>-120.00</td>
+							<td>
+								<button type="button" class="btn btn-primary">
+									  查看
+								</button>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="11" class="ly_td">*结算开支为负数表示商家需要收款 例如 -20：表示商家需要收取平台20元</td>
+						</tr>
+					</tbody>
+				</table>
+	</body>
+</html>
